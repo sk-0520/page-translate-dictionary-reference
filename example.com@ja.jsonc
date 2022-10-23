@@ -2,12 +2,10 @@
 	// 名前
 	"name": "example@ja.jsonc",
 	// バージョン
-	"version": "2022-10-23",
+	"version": "2022-10-24",
 	// 設定情報
 	"information": {
-		"website": "https://github.com/sk-0520/page-translate-dictionary-reference/blob/main/example%40ja.jsonc",
 		"repository": "https://github.com/sk-0520/page-translate-dictionary-reference",
-		"document": "https://github.com/sk-0520/page-translate-dictionary-reference/blob/main/example%40ja.md"
 	},
 	// 対象ドメイン
 	"hosts": [
