@@ -1,8 +1,8 @@
 {
 	// 名前
-	"name": "example@ja.jsonc",
+	"name": "example.com@ja.jsonc",
 	// バージョン
-	"version": "2022-10-24",
+	"version": "0.00.002",
 	// 設定情報
 	"information": {
 		"repository": "https://github.com/sk-0520/page-translate-dictionary-reference",
