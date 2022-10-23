@@ -1,0 +1,48 @@
+{
+    // 名前
+    "name": "example@ja.jsonc",
+    // バージョン
+    "version": "2022-10-23",
+    // 設定情報
+    "information": {
+        "website": "https://github.com/sk-0520/page-translate-dictionary-reference/blob/main/example%40ja.jsonc",
+        "repository": "https://github.com/sk-0520/page-translate-dictionary-reference",
+        "document": "https://github.com/sk-0520/page-translate-dictionary-reference/blob/main/example%40ja.md"
+    },
+    // 対象ドメイン
+    "hosts": [
+        "example.com",
+    ],
+    // 優先度 0: 通常, 低 < 0 < 高
+    "level": 0,
+    // 変換先言語
+    "language": "ja",
+    // パス
+    "path": {
+        // 対象パス(正規表現)
+        "/": {
+            // セレクタに対する処理
+            "selector": {
+                // ID 指定
+                "body p:nth-child(2)": {
+                    // 対象要素の textContent
+                    "text": {
+                        "replace": {
+                            "mode": "normal",
+                            "value": "このドメインは文書例として使用するものです。 このドメインは文書に掲載する場合、事前の調整や許可を得ずに使用可能です。"
+                        }
+                    },
+                },
+                "body p:nth-child(3) a": {
+                    // 対象要素の textContent
+                    "text": {
+                        "replace": {
+                            "mode": "normal",
+                            "value": "詳しくはこちら..."
+                        }
+                    },
+                },
+            }
+        }
+    },
+}
