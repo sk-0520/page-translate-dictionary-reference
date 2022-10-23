@@ -1,0 +1,79 @@
+{
+	// 名前
+	"name": "github.com@ja.jsonc",
+	// バージョン
+	"version": "0.00.001",
+	// 設定情報
+	"information": {
+		"repository": "https://github.com/sk-0520/page-translate-dictionary-reference"
+	},
+	// 対象ドメイン
+	"hosts": [
+		"github.com"
+	],
+	// 優先度 0: 通常, 低 < 0 < 高
+	"level": 0,
+	// 変換先言語
+	"language": "ja",
+	// パス
+	"path": {
+		// 対象パス(正規表現)
+		"^/$": {
+			// セレクタに対する処理
+			"selector": {
+				"{SEARCH}": {
+					"attributes": {
+						"placeholder": {
+							"replace": {
+								"mode": "common",
+								"value": "SEARCH_GITHUB"
+							}
+						}
+					}
+				},
+				"{LOGIN}": {
+					// 対象要素の textContent
+					"text": {
+						"replace": {
+							"mode": "common",
+							"value": "LOGIN"
+						}
+					}
+				}
+			}
+		},
+		"^/([a-zA-Z0-9_-]+)/?$": {
+			"selector": {
+				"{SEARCH}": {
+					"attributes": {
+						"placeholder": {
+							"replace": {
+								"mode": "common",
+								"value": "SEARCH_GITHUB"
+							}
+						}
+					}
+				},
+				"{LOGIN}": {
+					// 対象要素の textContent
+					"text": {
+						"replace": {
+							"mode": "common",
+							"value": "LOGIN"
+						}
+					}
+				}
+			}
+		}
+	},
+	"common": {
+		"selector": {
+			"SEARCH": "[name='q']",
+			"LOGIN": "a[href^='/login']"
+		},
+		"text": {
+			"SEARCH_GITHUB": "GitHubから検索",
+			"LOGIN": "ログイン"
+		}
+	}
+}
