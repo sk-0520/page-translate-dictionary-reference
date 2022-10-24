@@ -20,8 +20,12 @@
 		// 対象パス(正規表現)
 		"^/$": {
 			// セレクタに対する処理
-			"selector": {
-				"{SEARCH}": {
+			"query": [
+				{
+					"selector": {
+						"mode": "common",
+						"value": "SEARCH"
+					},
 					"attributes": {
 						"placeholder": {
 							"replace": {
@@ -31,8 +35,11 @@
 						}
 					}
 				},
-				"{LOGIN}": {
-					// 対象要素の textContent
+				{
+					"selector": {
+						"mode": "common",
+						"value": "LOGIN"
+					},
 					"text": {
 						"replace": {
 							"mode": "common",
@@ -40,11 +47,15 @@
 						}
 					}
 				}
-			}
+			]
 		},
 		"^/([a-zA-Z0-9_-]+)/?$": {
-			"selector": {
-				"{SEARCH}": {
+			"query": [
+				{
+					"selector": {
+						"mode": "common",
+						"value": "SEARCH"
+					},
 					"attributes": {
 						"placeholder": {
 							"replace": {
@@ -54,8 +65,11 @@
 						}
 					}
 				},
-				"{LOGIN}": {
-					// 対象要素の textContent
+				{
+					"selector": {
+						"mode": "common",
+						"value": "LOGIN"
+					},
 					"text": {
 						"replace": {
 							"mode": "common",
@@ -63,7 +77,7 @@
 						}
 					}
 				}
-			}
+			]
 		}
 	},
 	"common": {

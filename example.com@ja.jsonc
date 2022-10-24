@@ -20,8 +20,11 @@
 		// 対象パス(正規表現)
 		"/": {
 			// セレクタに対する処理
-			"selector": {
-				"body p:nth-child(2)": {
+			"query": [
+				{
+					"selector": {
+						"value": "body p:nth-child(2)"
+					},
 					// 対象要素の textContent
 					"text": {
 						"replace": {
@@ -30,7 +33,10 @@
 						}
 					}
 				},
-				"body p:nth-child(3) a": {
+				{
+					"selector": {
+						"value": "body p:nth-child(3) a"
+					},
 					"text": {
 						"replace": {
 							"mode": "normal",
@@ -38,7 +44,7 @@
 						}
 					}
 				}
-			}
+			]
 		}
 	}
 }
