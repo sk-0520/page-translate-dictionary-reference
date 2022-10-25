@@ -15,79 +15,667 @@
 	"level": 0,
 	// 変換先言語
 	"language": "ja",
-	// パス
 	"path": {
-		// 対象パス(正規表現)
+		// ルート(ログイン状態と非ログイン状態でクソほど変わる)
 		"^/$": {
-			// セレクタに対する処理
-			"query": [
-				{
-					"selector": {
-						"mode": "common",
-						"value": "SEARCH"
-					},
-					"attributes": {
-						"placeholder": {
-							"replace": {
-								"mode": "common",
-								"value": "SEARCH_GITHUB"
-							}
-						}
-					}
-				},
-				{
-					"selector": {
-						"mode": "common",
-						"value": "LOGIN"
-					},
-					"text": {
-						"replace": {
-							"mode": "common",
-							"value": "LOGIN"
-						}
-					}
-				}
+			"query": [],
+			"import": [
+				"QUERY_SEARCH",
+				"QUERY_LOGIN"
 			]
 		},
-		"^/([a-zA-Z0-9_-]+)/?$": {
+		// ログインページ
+		"(login)|(session)": {
 			"query": [
 				{
 					"selector": {
-						"mode": "common",
-						"value": "SEARCH"
+						"value": "h1"
+					},
+					"text": {
+						"replace": {
+							"value": "GitHubにサインイン"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "#js-flash-container .js-flash-alert"
+					},
+					"text": {
+						"replace": {
+							"value": "ユーザー名かパスワードが正しくありません"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "label[for='login_field']"
+					},
+					"text": {
+						"replace": {
+							"value": "ユーザー名かメールアドレス"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "label[for='password']"
+					},
+					"text": {
+						"replace": {
+							"value": "パスワード"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "a[href='/password_reset']"
+					},
+					"text": {
+						"replace": {
+							"value": "パスワードをお忘れですか？"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": ".login-callout",
+						"node": 1
+					},
+					"text": {
+						"replace": {
+							"value": "GitHubは初めてですか？"
+						}
+					}
+				},
+				/*
+				value 変えるの良くないって
+				{
+					"selector": {
+						"value": "input[type='submit']",
+					},
+					"value": {
+						"replace": {
+							"value": "サインイン"
+						}
+					}
+				},
+				*/
+			],
+		},
+		// ユーザーページ(組織は構造が違うので辛いんだわ)
+		"^/([a-zA-Z0-9_-]+)/?$": {
+			"query": [
+				//#region ヘッダ(人)
+				{
+					"selector": {
+						"value": "nav a[data-tab-item='overview']",
+						"node": 2,
+						"all": true,
+					},
+					"text": {
+						"replace": {
+							"value": "概要"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "nav a[data-tab-item='repositories']",
+						"node": 2,
+						"all": true,
+					},
+					"text": {
+						"replace": {
+							"value": "リポジトリ"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "nav a[data-tab-item='projects']",
+						"node": 2,
+						"all": true,
+					},
+					"text": {
+						"replace": {
+							"value": "プロジェクト"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "nav a[data-tab-item='packages']",
+						"node": 2,
+						"all": true,
+					},
+					"text": {
+						"replace": {
+							"value": "パッケージ"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "nav a[data-tab-item='stars']",
+						"node": 2,
+						"all": true,
+					},
+					"text": {
+						"replace": {
+							"value": "スター"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": ".user-status-message-wrapper .color-fg-muted"
+					},
+					"text": {
+						"replace": {
+							"value": "ステータスを設定"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": ".user-following-container .follow a.btn-block"
+					},
+					"text": {
+						"replace": {
+							"value": "フォローする"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": ".js-profile-editable-area  button.btn-block"
+					},
+					"text": {
+						"replace": {
+							"value": "プロファイル編集"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "a[href$='?tab=achievements'"
+					},
+					"text": {
+						"replace": {
+							"value": "実績"
+						}
+					}
+				},
+				//#endregion
+				//#region ヘッダ(組織)
+				/*
+				{
+					"selector": {
+						"value": "nav[aria-label='Organization'] a[href$='/repositories']",
+						"node": -1
+					},
+					"text": {
+						"match": {
+							"pattern": "Repositories"
+						},
+						"replace": {
+							"value": "リポジトリ"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "nav a[href$='/projects']",
+						"node": 2
+					},
+					"text": {
+						"replace": {
+							"value": "リポジトリ"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "nav a[href$='/packages']",
+						"node": 2
+					},
+					"text": {
+						"replace": {
+							"value": "パッケージ"
+						}
+					}
+				},
+				*/
+				//#endregion
+				//#region 概要
+				{
+					"selector": {
+						"value": "h2.text-normal",
+						"node": 1
+					},
+					"text": {
+						"match": {
+							"pattern": "Pinned",
+						},
+						"replace": {
+							"value": "固定されたリポジトリ",
+						}
+					}
+				},
+				//#endregion
+				//#region リポジトリ
+				{
+					"selector": {
+						"value": "#your-repos-filter",
 					},
 					"attributes": {
 						"placeholder": {
 							"replace": {
-								"mode": "common",
-								"value": "SEARCH_GITHUB"
+								"value": "リポジトリ検索..."
 							}
 						}
 					}
 				},
 				{
 					"selector": {
-						"mode": "common",
-						"value": "LOGIN"
+						"value": "a[href='/new']",
+						"node": 2,
+						"all": true
 					},
 					"text": {
 						"replace": {
-							"mode": "common",
-							"value": "LOGIN"
+							"value": "新規作成"
 						}
 					}
-				}
+				},
+				{
+					"selector": {
+						"value": "#type-options span:nth-child(1)"
+					},
+					"text": {
+						"replace": {
+							"value": "種類"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "#language-options span:nth-child(1)"
+					},
+					"text": {
+						"replace": {
+							"value": "言語"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "#sort-options span:nth-child(1)"
+					},
+					"text": {
+						"replace": {
+							"value": "ソート"
+						}
+					}
+				},
+				//#endregion
+			],
+			"import": [
+				//
+				"QUERY_SEARCH",
+				"QUERY_LOGIN",
+				"QUERY_SIGN_UP",
+				"QUERY_UPDATED",
+				//
+				"QUERY_LABEL_REPOSITORY_STATUS_PUBLIC",
+				"QUERY_LABEL_REPOSITORY_STATUS_PUBLIC_ARCHIVE",
+				"QUERY_LABEL_REPOSITORY_STATUS_PRIVATE",
+				"QUERY_LABEL_REPOSITORY_STATUS_PRIVATE_ARCHIVE",
+				//
 			]
+		},
+		"/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/?": {
+			"query": [],
+			"import": [
+				//
+				"QUERY_SEARCH",
+				"QUERY_LOGIN",
+				"QUERY_SIGN_UP",
+				"QUERY_UPDATED",
+				//
+				"QUERY_LABEL_REPOSITORY_STATUS_PUBLIC",
+				"QUERY_LABEL_REPOSITORY_STATUS_PUBLIC_ARCHIVE",
+				"QUERY_LABEL_REPOSITORY_STATUS_PRIVATE",
+				//
+				"QUERY_REPOSITORY_HEADER_PIN",
+				"QUERY_REPOSITORY_HEADER_UNPIN",
+				"QUERY_REPOSITORY_HEADER_WATCH",
+				"QUERY_REPOSITORY_HEADER_UNWATCH",
+				"QUERY_REPOSITORY_HEADER_FORK",
+				"QUERY_REPOSITORY_HEADER_STAR",
+				"QUERY_REPOSITORY_HEADER_CODE",
+				"QUERY_REPOSITORY_HEADER_ISSUES",
+				"QUERY_REPOSITORY_HEADER_PR",
+				"QUERY_REPOSITORY_HEADER_ACTIONS",
+				"QUERY_REPOSITORY_HEADER_PROJECT",
+				"QUERY_REPOSITORY_HEADER_WIKI",
+				"QUERY_REPOSITORY_HEADER_SECURITY",
+				"QUERY_REPOSITORY_HEADER_INSIGHTS",
+				"QUERY_REPOSITORY_HEADER_SETTING",
+			]
+		},
+		"/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/(issues(/(\\d+)|(new))?)|(labels)|(milestones)": {
+			"query": [
+				{
+					"selector": {
+						"value": "#filters-select-menu summary",
+						"node": 1,
+					},
+					"text": {
+						"replace": {
+							"value": "フィルタ"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "nav[aria-label='Issue'] a:nth-child(1)",
+						"node": 2,
+					},
+					"text": {
+						"replace": {
+							"value": "ラベル"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "nav[aria-label='Issue'] a:nth-child(2)",
+						"node": 2,
+					},
+					"text": {
+						"replace": {
+							"value": "マイルストーン"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "a[href$='/issues/new/choose']",
+					},
+					"text": {
+						"replace": {
+							"value": "起票"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "a[href$='/milestones/new']",
+					},
+					"text": {
+						"replace": {
+							"value": "マイルストーン作成"
+						}
+					}
+				},
+
+
+			],
 		}
 	},
 	"common": {
 		"selector": {
-			"SEARCH": "[name='q']",
-			"LOGIN": "a[href^='/login']"
+			"SEARCH": "header[role='banner'] input[name='q']",
+			"LOGIN": "header a[href^='/login']",
+			"REPOSITORY_HEADER_PIN": "form[action$='/profile_pin'] button",
 		},
 		"text": {
 			"SEARCH_GITHUB": "GitHubから検索",
 			"LOGIN": "ログイン"
+		},
+		"query": {
+			"QUERY_SEARCH": {
+				"selector": {
+					"mode": "common",
+					"value": "SEARCH"
+				},
+				"attributes": {
+					"placeholder": {
+						"replace": {
+							"mode": "common",
+							"value": "SEARCH_GITHUB"
+						}
+					}
+				}
+			},
+			"QUERY_LOGIN": {
+				"selector": {
+					"mode": "common",
+					"value": "LOGIN"
+				},
+				"text": {
+					"replace": {
+						"mode": "common",
+						"value": "LOGIN"
+					}
+				}
+			},
+			"QUERY_SIGN_UP": {
+				"selector": {
+					"value": "a[href^='/signup']",
+					"all": true,
+				},
+				"text": {
+					"replace": {
+						"value": "サインアップ"
+					}
+				}
+			},
+			"QUERY_UPDATED": {
+				"selector": {
+					"value": ".color-fg-muted",
+					"node": -1,
+					"all": true
+				},
+				"text": {
+					"match": {
+						"mode": "regex",
+						"pattern": "\\bUpdated\\b",
+					},
+					"replace": {
+						"value": "更新日",
+					}
+				}
+			},
+			"QUERY_LABEL_REPOSITORY_STATUS_PUBLIC": {
+				"selector": {
+					"value": ".Label.Label--secondary",
+					"all": true
+				},
+				"text": {
+					"match": {
+						"mode": "perfect",
+						"pattern": "Public"
+					},
+					"replace": {
+						"value": "公開"
+					}
+				}
+			},
+			"QUERY_LABEL_REPOSITORY_STATUS_PUBLIC_ARCHIVE": {
+				"selector": {
+					"value": ".Label.Label--attention",
+					"all": true
+				},
+				"text": {
+					"match": {
+						"mode": "perfect",
+						"pattern": "Public archive"
+					},
+					"replace": {
+						"value": "アーカイブ(公開)"
+					}
+				}
+			},
+			"QUERY_LABEL_REPOSITORY_STATUS_PRIVATE": {
+				"selector": {
+					"value": ".Label.Label--secondary",
+					"all": true
+				},
+				"text": {
+					"match": {
+						"mode": "perfect",
+						"pattern": "Private"
+					},
+					"replace": {
+						"value": "非公開"
+					}
+				}
+			},
+			"QUERY_LABEL_REPOSITORY_STATUS_PRIVATE_ARCHIVE": {
+				"selector": {
+					"value": ".Label.Label--secondary",
+					"all": true
+				},
+				"text": {
+					"match": {
+						"mode": "perfect",
+						"pattern": "Private archive"
+					},
+					"replace": {
+						"value": "アーカイブ(非公開)"
+					}
+				}
+			},
+			"QUERY_REPOSITORY_HEADER_PIN": {
+				"selector": {
+					"mode": "common",
+					"value": "REPOSITORY_HEADER_PIN",
+					"node": 2
+				},
+				"text": {
+					"match": {
+						"mode": "forward",
+						"pattern": "Pin"
+					},
+					"replace": {
+						"value": "固定する"
+					}
+				}
+			},
+			"QUERY_REPOSITORY_HEADER_UNPIN": {
+				"selector": {
+					"mode": "common",
+					"value": "REPOSITORY_HEADER_PIN",
+					"node": 2
+				},
+				"text": {
+					"match": {
+						"mode": "forward",
+						"pattern": "Unpin"
+					},
+					"replace": {
+						"value": "固定解除"
+					}
+				}
+			},
+			"QUERY_REPOSITORY_HEADER_WATCH": {},
+			"QUERY_REPOSITORY_HEADER_UNWATCH": {},
+			"QUERY_REPOSITORY_HEADER_FORK": {},
+			"QUERY_REPOSITORY_HEADER_STAR": {},
+			"QUERY_REPOSITORY_HEADER_CODE": {
+				"selector": {
+					"value": "#code-tab [data-content]"
+				},
+				"text": {
+					"replace": {
+						"value": "ソースコード"
+					}
+				}
+			},
+			"QUERY_REPOSITORY_HEADER_ISSUES": {
+				"selector": {
+					"value": "#issues-tab [data-content]",
+					"all": true
+				},
+				"text": {
+					"replace": {
+						"value": "課題"
+					}
+				}
+			},
+			"QUERY_REPOSITORY_HEADER_PR": {
+				"selector": {
+					"value": "#pull-requests-tab [data-content]"
+				},
+				"text": {
+					"replace": {
+						"value": "プルリクエスト"
+					}
+				}
+			},
+			"QUERY_REPOSITORY_HEADER_ACTIONS": {
+				"selector": {
+					"value": "#actions-tab [data-content]"
+				},
+				"text": {
+					"replace": {
+						"value": "アクション"
+					}
+				}
+			},
+			"QUERY_REPOSITORY_HEADER_PROJECT": {
+				"selector": {
+					"value": "#projects-tab [data-content]"
+				},
+				"text": {
+					"replace": {
+						"value": "プロジェクト"
+					}
+				}
+			},
+			"QUERY_REPOSITORY_HEADER_WIKI": {
+				"selector": {
+					"value": "#wiki-tab [data-content]"
+				},
+				"text": {
+					"replace": {
+						"value": "Wiki"
+					}
+				}
+			},
+			"QUERY_REPOSITORY_HEADER_SECURITY": {
+				"selector": {
+					"value": "#security-tab [data-content]"
+				},
+				"text": {
+					"replace": {
+						"value": "セキュリティ"
+					}
+				}
+			},
+			"QUERY_REPOSITORY_HEADER_INSIGHTS": {
+				"selector": {
+					"value": "#insights-tab [data-content]"
+				},
+				"text": {
+					"replace": {
+						"value": "分析"
+					}
+				}
+			},
+			"QUERY_REPOSITORY_HEADER_SETTING": {
+				"selector": {
+					"value": "#settings-tab [data-content]"
+				},
+				"text": {
+					"replace": {
+						"value": "設定"
+					}
+				}
+			},
 		}
 	}
 }
