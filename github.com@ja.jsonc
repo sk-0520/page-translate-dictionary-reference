@@ -263,6 +263,313 @@
 						}
 					}
 				},
+				// 芝公件数(直近)
+				{
+					"selector": {
+						"value": ".js-yearly-contributions h2"
+					},
+					"text": {
+						"match": {
+							"mode": "regex",
+							"pattern": "(?<COUNTER>[1-9][0-9,]+)[\\s\\S]+in\\s+the\\s+last\\s+year",
+						},
+						"replace": {
+							//"value": "${COUNTER} * ${YEAR}",
+							"value": "直近年の貢献数 $<COUNTER>",
+						}
+					}
+				},
+				// 芝公件数(年指定)
+				{
+					"selector": {
+						"value": ".js-yearly-contributions h2"
+					},
+					"text": {
+						"match": {
+							"mode": "regex",
+							"pattern": "(?<COUNTER>[1-9][0-9,]+)[\\s\\S]+in\\s+(?<YEAR>[0-9]+)",
+						},
+						"replace": {
+							"value": "$<YEAR> 年の貢献数 $<COUNTER>",
+						}
+					}
+				},
+				// 芝 1月
+				{
+					"selector": {
+						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
+						"all": true
+					},
+					"text": {
+						"match": {
+							"pattern": "Jan"
+						},
+						"replace": {
+							"value": "1月",
+						}
+					}
+				},
+				// 芝 2月
+				{
+					"selector": {
+						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
+						"all": true
+					},
+					"text": {
+						"match": {
+							"pattern": "Feb"
+						},
+						"replace": {
+							"value": "2月",
+						}
+					}
+				},
+				// 芝 3月
+				{
+					"selector": {
+						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
+						"all": true
+					},
+					"text": {
+						"match": {
+							"pattern": "Mar"
+						},
+						"replace": {
+							"value": "3月",
+						}
+					}
+				},
+				// 芝 4月
+				{
+					"selector": {
+						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
+						"all": true
+					},
+					"text": {
+						"match": {
+							"pattern": "Apr"
+						},
+						"replace": {
+							"value": "4月",
+						}
+					}
+				},
+				// 芝 5月
+				{
+					"selector": {
+						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
+						"all": true
+					},
+					"text": {
+						"match": {
+							"pattern": "May"
+						},
+						"replace": {
+							"value": "5月",
+						}
+					}
+				},
+				// 芝 6月
+				{
+					"selector": {
+						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
+						"all": true
+					},
+					"text": {
+						"match": {
+							"pattern": "Jun"
+						},
+						"replace": {
+							"value": "6月",
+						}
+					}
+				},
+				// 芝 7月
+				{
+					"selector": {
+						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
+						"all": true
+					},
+					"text": {
+						"match": {
+							"pattern": "Jul"
+						},
+						"replace": {
+							"value": "7月",
+						}
+					}
+				},
+				// 芝 8月
+				{
+					"selector": {
+						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
+						"all": true
+					},
+					"text": {
+						"match": {
+							"pattern": "Aug"
+						},
+						"replace": {
+							"value": "8月",
+						}
+					}
+				},
+				// 芝 9月
+				{
+					"selector": {
+						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
+						"all": true
+					},
+					"text": {
+						"match": {
+							"pattern": "Sep"
+						},
+						"replace": {
+							"value": "9月",
+						}
+					}
+				},
+				// 芝 10月
+				{
+					"selector": {
+						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
+						"all": true
+					},
+					"text": {
+						"match": {
+							"pattern": "Oct"
+						},
+						"replace": {
+							"value": "10月",
+						}
+					}
+				},
+				// 芝 11月
+				{
+					"selector": {
+						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
+						"all": true
+					},
+					"text": {
+						"match": {
+							"pattern": "Nov"
+						},
+						"replace": {
+							"value": "11月",
+						}
+					}
+				},
+				// 芝 12月
+				{
+					"selector": {
+						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
+						"all": true
+					},
+					"text": {
+						"match": {
+							"pattern": "Dec"
+						},
+						"replace": {
+							"value": "12月",
+						}
+					}
+				},
+				// 芝 週: 月
+				{
+					"selector": {
+						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
+						"all": true
+					},
+					"text": {
+						"match": {
+							"pattern": "Mon"
+						},
+						"replace": {
+							"value": "月曜",
+						}
+					}
+				},
+				// 芝 週: 水
+				{
+					"selector": {
+						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
+						"all": true
+					},
+					"text": {
+						"match": {
+							"pattern": "Wed"
+						},
+						"replace": {
+							"value": "水曜",
+						}
+					}
+				},
+				// 芝 週: 金
+				{
+					"selector": {
+						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
+						"all": true
+					},
+					"text": {
+						"match": {
+							"pattern": "Fri"
+						},
+						"replace": {
+							"value": "金曜",
+						}
+					}
+				},
+				// Learn how we count contributions
+				{
+					"selector": {
+						"value": "a[href='https://docs.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile']",
+					},
+					"text": {
+						"replace": {
+							"value": "貢献度の算出方法について",
+						}
+					}
+				},
+				// less
+				{
+					"selector": {
+						"value": ".js-yearly-contributions .float-right.color-fg-muted",
+						"node": -1
+					},
+					"text": {
+						"match": {
+							"pattern": "Less"
+						},
+						"replace": {
+							"value": "少 "
+						}
+					}
+				},
+				// more
+				{
+					"selector": {
+						"value": ".js-yearly-contributions .float-right.color-fg-muted",
+						"node": -1
+					},
+					"text": {
+						"match": {
+							"pattern": "More"
+						},
+						"replace": {
+							"value": " 多"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "#js-contribution-activity h2"
+					},
+					"text": {
+						"replace": {
+							"value": "貢献状態"
+						}
+					}
+				},
 				//#endregion
 				//#region リポジトリ
 				{
