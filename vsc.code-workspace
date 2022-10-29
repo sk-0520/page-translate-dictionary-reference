@@ -8,5 +8,10 @@
 		"cSpell.words": [
 			"endregion"
 		]
+	},
+	"extensions": {
+		"recommendations": [
+			"ritwickdey.LiveServer"
+		]
 	}
 }
