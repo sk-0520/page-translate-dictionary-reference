@@ -216,7 +216,7 @@
 						"node": -1
 					},
 					"text": {
-						"match": {
+						"matches": {
 							"pattern": "Repositories"
 						},
 						"replace": {
@@ -255,12 +255,14 @@
 						"node": 1
 					},
 					"text": {
-						"match": {
-							"pattern": "Pinned",
-						},
-						"replace": {
-							"value": "固定されたリポジトリ",
-						}
+						"matches": [
+							{
+								"pattern": "Pinned",
+								"replace": {
+									"value": "固定されたリポジトリ",
+								}
+							},
+						]
 					}
 				},
 				// 芝公件数(直近)
@@ -269,14 +271,16 @@
 						"value": ".js-yearly-contributions h2"
 					},
 					"text": {
-						"match": {
-							"mode": "regex",
-							"pattern": "(?<COUNTER>[1-9][0-9,]+)[\\s\\S]+in\\s+the\\s+last\\s+year",
-						},
-						"replace": {
-							//"value": "${COUNTER} * ${YEAR}",
-							"value": "直近年の貢献数 $<COUNTER>",
-						}
+						"matches": [
+							{
+								"mode": "regex",
+								"pattern": "(?<COUNTER>[1-9][0-9,]+)[\\s\\S]+in\\s+the\\s+last\\s+year",
+								"replace": {
+									//"value": "${COUNTER} * ${YEAR}",
+									"value": "直近年の貢献数 $<COUNTER>",
+								}
+							}
+						],
 					}
 				},
 				// 芝公件数(年指定)
@@ -285,13 +289,15 @@
 						"value": ".js-yearly-contributions h2"
 					},
 					"text": {
-						"match": {
-							"mode": "regex",
-							"pattern": "(?<COUNTER>[1-9][0-9,]+)[\\s\\S]+in\\s+(?<YEAR>[0-9]+)",
-						},
-						"replace": {
-							"value": "$<YEAR> 年の貢献数 $<COUNTER>",
-						}
+						"matches": [
+							{
+								"mode": "regex",
+								"pattern": "(?<COUNTER>[1-9][0-9,]+)[\\s\\S]+in\\s+(?<YEAR>[0-9]+)",
+								"replace": {
+									"value": "$<YEAR> 年の貢献数 $<COUNTER>",
+								}
+							}
+						],
 					}
 				},
 				// 芝 1月
@@ -301,12 +307,14 @@
 						"all": true
 					},
 					"text": {
-						"match": {
-							"pattern": "Jan"
-						},
-						"replace": {
-							"value": "1月",
-						}
+						"matches": [
+							{
+								"pattern": "Jan",
+								"replace": {
+									"value": "1月",
+								}
+							}
+						],
 					}
 				},
 				// 芝 2月
@@ -316,12 +324,14 @@
 						"all": true
 					},
 					"text": {
-						"match": {
-							"pattern": "Feb"
-						},
-						"replace": {
-							"value": "2月",
-						}
+						"matches": [
+							{
+								"pattern": "Feb",
+								"replace": {
+									"value": "2月",
+								}
+							}
+						],
 					}
 				},
 				// 芝 3月
@@ -331,12 +341,14 @@
 						"all": true
 					},
 					"text": {
-						"match": {
-							"pattern": "Mar"
-						},
-						"replace": {
-							"value": "3月",
-						}
+						"matches": [
+							{
+								"pattern": "Mar",
+								"replace": {
+									"value": "3月",
+								}
+							}
+						],
 					}
 				},
 				// 芝 4月
@@ -346,12 +358,14 @@
 						"all": true
 					},
 					"text": {
-						"match": {
-							"pattern": "Apr"
-						},
-						"replace": {
-							"value": "4月",
-						}
+						"matches": [
+							{
+								"pattern": "Apr",
+								"replace": {
+									"value": "4月",
+								}
+							}
+						],
 					}
 				},
 				// 芝 5月
@@ -361,12 +375,14 @@
 						"all": true
 					},
 					"text": {
-						"match": {
-							"pattern": "May"
-						},
-						"replace": {
-							"value": "5月",
-						}
+						"matches": [
+							{
+								"pattern": "May",
+								"replace": {
+									"value": "5月",
+								}
+							}
+						],
 					}
 				},
 				// 芝 6月
@@ -376,12 +392,14 @@
 						"all": true
 					},
 					"text": {
-						"match": {
-							"pattern": "Jun"
-						},
-						"replace": {
-							"value": "6月",
-						}
+						"matches": [
+							{
+								"pattern": "Jun",
+								"replace": {
+									"value": "6月",
+								}
+							},
+						]
 					}
 				},
 				// 芝 7月
@@ -391,12 +409,14 @@
 						"all": true
 					},
 					"text": {
-						"match": {
-							"pattern": "Jul"
-						},
-						"replace": {
-							"value": "7月",
-						}
+						"matches": [
+							{
+								"pattern": "Jul",
+								"replace": {
+									"value": "7月",
+								}
+							},
+						]
 					}
 				},
 				// 芝 8月
@@ -406,12 +426,14 @@
 						"all": true
 					},
 					"text": {
-						"match": {
-							"pattern": "Aug"
-						},
-						"replace": {
-							"value": "8月",
-						}
+						"matches": [
+							{
+								"pattern": "Aug",
+								"replace": {
+									"value": "8月",
+								}
+							},
+						]
 					}
 				},
 				// 芝 9月
@@ -421,12 +443,14 @@
 						"all": true
 					},
 					"text": {
-						"match": {
-							"pattern": "Sep"
-						},
-						"replace": {
-							"value": "9月",
-						}
+						"matches": [
+							{
+								"pattern": "Sep",
+								"replace": {
+									"value": "9月",
+								}
+							}
+						],
 					}
 				},
 				// 芝 10月
@@ -436,12 +460,14 @@
 						"all": true
 					},
 					"text": {
-						"match": {
-							"pattern": "Oct"
-						},
-						"replace": {
-							"value": "10月",
-						}
+						"matches": [
+							{
+								"pattern": "Oct",
+								"replace": {
+									"value": "10月",
+								}
+							}
+						],
 					}
 				},
 				// 芝 11月
@@ -451,12 +477,14 @@
 						"all": true
 					},
 					"text": {
-						"match": {
-							"pattern": "Nov"
-						},
-						"replace": {
-							"value": "11月",
-						}
+						"matches": [
+							{
+								"pattern": "Nov",
+								"replace": {
+									"value": "11月",
+								}
+							}
+						],
 					}
 				},
 				// 芝 12月
@@ -466,12 +494,14 @@
 						"all": true
 					},
 					"text": {
-						"match": {
-							"pattern": "Dec"
-						},
-						"replace": {
-							"value": "12月",
-						}
+						"matches": [
+							{
+								"pattern": "Dec",
+								"replace": {
+									"value": "12月",
+								}
+							},
+						]
 					}
 				},
 				// 芝 週: 月
@@ -481,12 +511,14 @@
 						"all": true
 					},
 					"text": {
-						"match": {
-							"pattern": "Mon"
-						},
-						"replace": {
-							"value": "月曜",
-						}
+						"matches": [
+							{
+								"pattern": "Mon",
+								"replace": {
+									"value": "月曜",
+								}
+							},
+						]
 					}
 				},
 				// 芝 週: 水
@@ -496,12 +528,14 @@
 						"all": true
 					},
 					"text": {
-						"match": {
-							"pattern": "Wed"
-						},
-						"replace": {
-							"value": "水曜",
-						}
+						"matches": [
+							{
+								"pattern": "Wed",
+								"replace": {
+									"value": "水曜",
+								}
+							},
+						]
 					}
 				},
 				// 芝 週: 金
@@ -511,12 +545,14 @@
 						"all": true
 					},
 					"text": {
-						"match": {
-							"pattern": "Fri"
-						},
-						"replace": {
-							"value": "金曜",
-						}
+						"matches": [
+							{
+								"pattern": "Fri",
+								"replace": {
+									"value": "金曜",
+								}
+							},
+						]
 					}
 				},
 				// Learn how we count contributions
@@ -537,12 +573,14 @@
 						"node": -1
 					},
 					"text": {
-						"match": {
-							"pattern": "Less"
-						},
-						"replace": {
-							"value": "少 "
-						}
+						"matches": [
+							{
+								"pattern": "Less",
+								"replace": {
+									"value": "少 "
+								}
+							},
+						]
 					}
 				},
 				// more
@@ -552,12 +590,14 @@
 						"node": -1
 					},
 					"text": {
-						"match": {
-							"pattern": "More"
-						},
-						"replace": {
-							"value": " 多"
-						}
+						"matches": [
+							{
+								"pattern": "More",
+								"replace": {
+									"value": " 多"
+								}
+							},
+						]
 					}
 				},
 				{
@@ -727,8 +767,6 @@
 						}
 					}
 				},
-
-
 			],
 		}
 	},
@@ -787,13 +825,15 @@
 					"all": true
 				},
 				"text": {
-					"match": {
-						"mode": "regex",
-						"pattern": "\\bUpdated\\b",
-					},
-					"replace": {
-						"value": "更新日",
-					}
+					"matches": [
+						{
+							"mode": "regex",
+							"pattern": "\\bUpdated\\b",
+							"replace": {
+								"value": "更新日",
+							}
+						}
+					],
 				}
 			},
 			"QUERY_LABEL_REPOSITORY_STATUS_PUBLIC": {
@@ -802,13 +842,15 @@
 					"all": true
 				},
 				"text": {
-					"match": {
-						"mode": "perfect",
-						"pattern": "Public"
-					},
-					"replace": {
-						"value": "公開"
-					}
+					"matches": [
+						{
+							"mode": "perfect",
+							"pattern": "Public",
+							"replace": {
+								"value": "公開"
+							}
+						}
+					],
 				}
 			},
 			"QUERY_LABEL_REPOSITORY_STATUS_PUBLIC_ARCHIVE": {
@@ -817,13 +859,15 @@
 					"all": true
 				},
 				"text": {
-					"match": {
-						"mode": "perfect",
-						"pattern": "Public archive"
-					},
-					"replace": {
-						"value": "アーカイブ(公開)"
-					}
+					"matches": [
+						{
+							"mode": "perfect",
+							"pattern": "Public archive",
+							"replace": {
+								"value": "アーカイブ(公開)"
+							}
+						}
+					],
 				}
 			},
 			"QUERY_LABEL_REPOSITORY_STATUS_PRIVATE": {
@@ -832,13 +876,15 @@
 					"all": true
 				},
 				"text": {
-					"match": {
-						"mode": "perfect",
-						"pattern": "Private"
-					},
-					"replace": {
-						"value": "非公開"
-					}
+					"matches": [
+						{
+							"mode": "perfect",
+							"pattern": "Private",
+							"replace": {
+								"value": "非公開"
+							}
+						}
+					],
 				}
 			},
 			"QUERY_LABEL_REPOSITORY_STATUS_PRIVATE_ARCHIVE": {
@@ -847,13 +893,15 @@
 					"all": true
 				},
 				"text": {
-					"match": {
-						"mode": "perfect",
-						"pattern": "Private archive"
-					},
-					"replace": {
-						"value": "アーカイブ(非公開)"
-					}
+					"matches": [
+						{
+							"mode": "perfect",
+							"pattern": "Private archive",
+							"replace": {
+								"value": "アーカイブ(非公開)"
+							}
+						}
+					],
 				}
 			},
 			"QUERY_REPOSITORY_HEADER_PIN": {
@@ -863,13 +911,15 @@
 					"node": 2
 				},
 				"text": {
-					"match": {
-						"mode": "forward",
-						"pattern": "Pin"
-					},
-					"replace": {
-						"value": "固定する"
-					}
+					"matches": [
+						{
+							"mode": "forward",
+							"pattern": "Pin",
+							"replace": {
+								"value": "固定する"
+							}
+						},
+					]
 				}
 			},
 			"QUERY_REPOSITORY_HEADER_UNPIN": {
@@ -879,13 +929,15 @@
 					"node": 2
 				},
 				"text": {
-					"match": {
-						"mode": "forward",
-						"pattern": "Unpin"
-					},
-					"replace": {
-						"value": "固定解除"
-					}
+					"matches": [
+						{
+							"mode": "forward",
+							"pattern": "Unpin",
+							"replace": {
+								"value": "固定解除"
+							}
+						}
+					],
 				}
 			},
 			"QUERY_REPOSITORY_HEADER_WATCH": {},
