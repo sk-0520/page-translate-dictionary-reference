@@ -528,10 +528,7 @@
 				"QUERY_SIGN_UP",
 				"QUERY_UPDATED",
 				//
-				"QUERY_LABEL_REPOSITORY_STATUS_PUBLIC",
-				"QUERY_LABEL_REPOSITORY_STATUS_PUBLIC_ARCHIVE",
-				"QUERY_LABEL_REPOSITORY_STATUS_PRIVATE",
-				"QUERY_LABEL_REPOSITORY_STATUS_PRIVATE_ARCHIVE",
+				"QUERY_LABEL_REPOSITORY_STATUS",
 				//
 			]
 		},
@@ -544,12 +541,9 @@
 				"QUERY_SIGN_UP",
 				"QUERY_UPDATED",
 				//
-				"QUERY_LABEL_REPOSITORY_STATUS_PUBLIC",
-				"QUERY_LABEL_REPOSITORY_STATUS_PUBLIC_ARCHIVE",
-				"QUERY_LABEL_REPOSITORY_STATUS_PRIVATE",
+				"QUERY_LABEL_REPOSITORY_STATUS",
 				//
 				"QUERY_REPOSITORY_HEADER_PIN",
-				"QUERY_REPOSITORY_HEADER_UNPIN",
 				"QUERY_REPOSITORY_HEADER_WATCH",
 				"QUERY_REPOSITORY_HEADER_UNWATCH",
 				"QUERY_REPOSITORY_HEADER_FORK",
@@ -627,7 +621,6 @@
 		"selector": {
 			"SEARCH": "header[role='banner'] input[name='q']",
 			"LOGIN": "header a[href^='/login']",
-			"REPOSITORY_HEADER_PIN": "form[action$='/profile_pin'] button",
 		},
 		"text": {
 			"SEARCH_GITHUB": "GitHubから検索",
@@ -689,9 +682,9 @@
 					],
 				}
 			},
-			"QUERY_LABEL_REPOSITORY_STATUS_PUBLIC": {
+			"QUERY_LABEL_REPOSITORY_STATUS": {
 				"selector": {
-					"value": ".Label.Label--secondary",
+					"value": ".Label.Label--secondary, .Label.Label--attention",
 					"all": true
 				},
 				"text": {
@@ -702,51 +695,21 @@
 							"replace": {
 								"value": "公開"
 							}
-						}
-					],
-				}
-			},
-			"QUERY_LABEL_REPOSITORY_STATUS_PUBLIC_ARCHIVE": {
-				"selector": {
-					"value": ".Label.Label--attention",
-					"all": true
-				},
-				"text": {
-					"matches": [
+						},
 						{
 							"mode": "perfect",
 							"pattern": "Public archive",
 							"replace": {
 								"value": "アーカイブ(公開)"
 							}
-						}
-					],
-				}
-			},
-			"QUERY_LABEL_REPOSITORY_STATUS_PRIVATE": {
-				"selector": {
-					"value": ".Label.Label--secondary",
-					"all": true
-				},
-				"text": {
-					"matches": [
+						},
 						{
 							"mode": "perfect",
 							"pattern": "Private",
 							"replace": {
 								"value": "非公開"
 							}
-						}
-					],
-				}
-			},
-			"QUERY_LABEL_REPOSITORY_STATUS_PRIVATE_ARCHIVE": {
-				"selector": {
-					"value": ".Label.Label--secondary",
-					"all": true
-				},
-				"text": {
-					"matches": [
+						},
 						{
 							"mode": "perfect",
 							"pattern": "Private archive",
@@ -759,8 +722,8 @@
 			},
 			"QUERY_REPOSITORY_HEADER_PIN": {
 				"selector": {
-					"mode": "common",
-					"value": "REPOSITORY_HEADER_PIN",
+					"mode": "normal",
+					"value": "form[action$='/profile_pin'] button",
 					"node": 2
 				},
 				"text": {
@@ -772,17 +735,6 @@
 								"value": "固定する"
 							}
 						},
-					]
-				}
-			},
-			"QUERY_REPOSITORY_HEADER_UNPIN": {
-				"selector": {
-					"mode": "common",
-					"value": "REPOSITORY_HEADER_PIN",
-					"node": 2
-				},
-				"text": {
-					"matches": [
 						{
 							"mode": "forward",
 							"pattern": "Unpin",
@@ -790,7 +742,7 @@
 								"value": "固定解除"
 							}
 						}
-					],
+					]
 				}
 			},
 			"QUERY_REPOSITORY_HEADER_WATCH": {},
