@@ -880,6 +880,26 @@
 				"text": {
 					"matches": [
 						{
+							"pattern": "now",
+							"replace": {
+								"value": "ついさっき"
+							}
+						},
+						{
+							"mode": "regex",
+							"pattern": "(?<TIME>\\d) seconds ago",
+							"replace": {
+								"value": "$<TIME> 秒間前"
+							}
+						},
+						{
+							"mode": "regex",
+							"pattern": "(?<TIME>\\d) minute(s)? ago",
+							"replace": {
+								"value": "$<TIME> 分間前"
+							}
+						},
+						{
 							"mode": "regex",
 							"pattern": "(?<TIME>\\d) hours ago",
 							"replace": {
@@ -977,7 +997,6 @@
 						"value": "スター"
 					}
 				}
-
 			},
 			"QUERY_REPOSITORY_HEADER_CODE": {
 				"selector": {
@@ -1070,7 +1089,6 @@
 					}
 				}
 			},
-
 		}
 	}
 }
