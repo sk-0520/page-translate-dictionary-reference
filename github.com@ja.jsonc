@@ -600,7 +600,62 @@
 							"value": "タグ一覧を表示"
 						}
 					}
-				}
+				},
+				{
+					"selector": {
+						"value": ".file-navigation a[href$='/branches'] .color-fg-muted"
+					},
+					"text": {
+						"replace": {
+							"value": "ブランチ"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": ".file-navigation a[href$='/tags'] .color-fg-muted"
+					},
+					"text": {
+						"replace": {
+							"value": "タグ"
+						}
+					}
+				},
+				//TODO: あとから生成されるっぽい
+				{
+					"selector": {
+						"value": ".file-navigation a[href*='/find/']"
+					},
+					"text": {
+						"replace": {
+							"value": "ファイル検索"
+						}
+					}
+				},
+				// Code
+				{
+					"selector": {
+						"value": ".file-navigation get-repo summary",
+						"node": 1
+					},
+					"text": {
+						"replace": {
+							"value": "コード"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": ".file-navigation get-repo .text-bold",
+						"node": 2
+					},
+					"text": {
+						"replace": {
+							"value": "クローン"
+						}
+					}
+				},
+
 
 
 			],
