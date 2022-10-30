@@ -532,8 +532,78 @@
 				//
 			]
 		},
-		"/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/?": {
-			"query": [],
+		// ソース一覧
+		"/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)(/tree)?/?": {
+			"query": [
+				{
+					"selector": {
+						"value": "#branch-select-menu summary + .SelectMenu .SelectMenu-title"
+					},
+					"text": {
+						"replace": {
+							"value": "ブランチ切り替え",
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "#context-commitish-filter-field"
+					},
+					"attributes": {
+						"placeholder": {
+							"replace": {
+								"value": "ブランチ/タグで絞り込み",
+							}
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "#branch-select-menu summary + .SelectMenu [role='tablist'] button",
+						"all": true
+					},
+					"text": {
+						"matches": [
+							{
+								"mode": "perfect",
+								"pattern": "Branches",
+								"replace": {
+									"value": "ブランチ"
+								}
+							},
+							{
+								"mode": "perfect",
+								"pattern": "Tags",
+								"replace": {
+									"value": "タグ"
+								}
+							},
+						]
+					}
+				},
+				{
+					"selector": {
+						"value": "#ref-list-branches a[href$='/branches']"
+					},
+					"text": {
+						"replace": {
+							"value": "ブランチ一覧を表示"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "#tags-menu a[href$='/tags']"
+					},
+					"text": {
+						"replace": {
+							"value": "タグ一覧を表示"
+						}
+					}
+				}
+
+
+			],
 			"import": [
 				//
 				"QUERY_SEARCH",
@@ -559,7 +629,7 @@
 				"QUERY_REPOSITORY_HEADER_SETTING",
 			]
 		},
-		"/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/(issues(/(\\d+)|(new))?)|(labels)|(milestones)": {
+		"/([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/(issues(/(\\d+)|(new))?)|(labels)|(milestones)|(pulls)": {
 			"query": [
 				{
 					"selector": {
