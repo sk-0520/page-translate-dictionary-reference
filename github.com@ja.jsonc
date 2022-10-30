@@ -300,7 +300,7 @@
 						],
 					}
 				},
-				// 芝 1月
+				// 芝: 月
 				{
 					"selector": {
 						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
@@ -313,198 +313,83 @@
 								"replace": {
 									"value": "1月",
 								}
-							}
-						],
-					}
-				},
-				// 芝 2月
-				{
-					"selector": {
-						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
-						"all": true
-					},
-					"text": {
-						"matches": [
+							},
 							{
 								"pattern": "Feb",
 								"replace": {
 									"value": "2月",
 								}
-							}
-						],
-					}
-				},
-				// 芝 3月
-				{
-					"selector": {
-						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
-						"all": true
-					},
-					"text": {
-						"matches": [
+							},
 							{
 								"pattern": "Mar",
 								"replace": {
 									"value": "3月",
 								}
-							}
-						],
-					}
-				},
-				// 芝 4月
-				{
-					"selector": {
-						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
-						"all": true
-					},
-					"text": {
-						"matches": [
+							},
 							{
 								"pattern": "Apr",
 								"replace": {
 									"value": "4月",
 								}
-							}
-						],
-					}
-				},
-				// 芝 5月
-				{
-					"selector": {
-						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
-						"all": true
-					},
-					"text": {
-						"matches": [
+							},
 							{
 								"pattern": "May",
 								"replace": {
 									"value": "5月",
 								}
-							}
-						],
-					}
-				},
-				// 芝 6月
-				{
-					"selector": {
-						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
-						"all": true
-					},
-					"text": {
-						"matches": [
+							},
+							{
+								"pattern": "May",
+								"replace": {
+									"value": "5月",
+								}
+							},
 							{
 								"pattern": "Jun",
 								"replace": {
 									"value": "6月",
 								}
 							},
-						]
-					}
-				},
-				// 芝 7月
-				{
-					"selector": {
-						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
-						"all": true
-					},
-					"text": {
-						"matches": [
 							{
 								"pattern": "Jul",
 								"replace": {
 									"value": "7月",
 								}
 							},
-						]
-					}
-				},
-				// 芝 8月
-				{
-					"selector": {
-						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
-						"all": true
-					},
-					"text": {
-						"matches": [
 							{
 								"pattern": "Aug",
 								"replace": {
 									"value": "8月",
 								}
 							},
-						]
-					}
-				},
-				// 芝 9月
-				{
-					"selector": {
-						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
-						"all": true
-					},
-					"text": {
-						"matches": [
 							{
 								"pattern": "Sep",
 								"replace": {
 									"value": "9月",
 								}
-							}
-						],
-					}
-				},
-				// 芝 10月
-				{
-					"selector": {
-						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
-						"all": true
-					},
-					"text": {
-						"matches": [
+							},
 							{
 								"pattern": "Oct",
 								"replace": {
 									"value": "10月",
 								}
-							}
-						],
-					}
-				},
-				// 芝 11月
-				{
-					"selector": {
-						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
-						"all": true
-					},
-					"text": {
-						"matches": [
+							},
 							{
 								"pattern": "Nov",
 								"replace": {
 									"value": "11月",
 								}
-							}
-						],
-					}
-				},
-				// 芝 12月
-				{
-					"selector": {
-						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
-						"all": true
-					},
-					"text": {
-						"matches": [
+							},
 							{
 								"pattern": "Dec",
 								"replace": {
 									"value": "12月",
 								}
-							},
-						]
+							}
+						],
 					}
 				},
-				// 芝 週: 月
+				// 芝: 週
 				{
 					"selector": {
 						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
@@ -518,34 +403,12 @@
 									"value": "月曜",
 								}
 							},
-						]
-					}
-				},
-				// 芝 週: 水
-				{
-					"selector": {
-						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
-						"all": true
-					},
-					"text": {
-						"matches": [
 							{
 								"pattern": "Wed",
 								"replace": {
 									"value": "水曜",
 								}
 							},
-						]
-					}
-				},
-				// 芝 週: 金
-				{
-					"selector": {
-						"value": ".js-yearly-contributions svg .ContributionCalendar-label",
-						"all": true
-					},
-					"text": {
-						"matches": [
 							{
 								"pattern": "Fri",
 								"replace": {
@@ -566,11 +429,11 @@
 						}
 					}
 				},
-				// less
+				// 芝: less .... more
 				{
 					"selector": {
 						"value": ".js-yearly-contributions .float-right.color-fg-muted",
-						"node": -1
+						"node": -2
 					},
 					"text": {
 						"matches": [
@@ -580,23 +443,13 @@
 									"value": "少 "
 								}
 							},
-						]
-					}
-				},
-				// more
-				{
-					"selector": {
-						"value": ".js-yearly-contributions .float-right.color-fg-muted",
-						"node": -1
-					},
-					"text": {
-						"matches": [
 							{
 								"pattern": "More",
 								"replace": {
 									"value": " 多"
 								}
 							},
+
 						]
 					}
 				},
