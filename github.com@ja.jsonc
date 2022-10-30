@@ -651,7 +651,6 @@
 						}
 					}
 				},
-				//TODO: あとから生成されるっぽい
 				{
 					"selector": {
 						"value": ".file-navigation a[href*='/find/']"
@@ -683,6 +682,98 @@
 						"replace": {
 							"value": "クローン"
 						}
+					}
+				},
+				{
+					"selector": {
+						"value": ".Layout-sidebar h2",
+					},
+					"text": {
+						"replace": {
+							"value": "情報"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": ".Layout-sidebar a[href$='#readme']",
+						"node": 2
+					},
+					"text": {
+						"replace": {
+							"value": " README"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": ".Layout-sidebar a[href$='/stargazers']",
+						"node": 3
+					},
+					"text": {
+						"replace": {
+							"value": " スター"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": ".Layout-sidebar a[href$='/watchers']",
+						"node": 3
+					},
+					"text": {
+						"replace": {
+							"value": " 注目"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": ".Layout-sidebar a[href$='/network/members']",
+						"node": 3
+					},
+					"text": {
+						"replace": {
+							"value": " フォーク"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": ".Layout-sidebar a[href$='/releases']",
+						"node": 3
+					},
+					"text": {
+						"replace": {
+							"value": " リリース"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": ".Layout-sidebar a[href*='/packages']",
+						"node": 3
+					},
+					"text": {
+						"replace": {
+							"value": " パッケージ"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": ".Layout-sidebar h2",
+						"all": true
+					},
+					"text": {
+						"matches": [
+							{
+								"pattern": "Languages",
+								"replace": {
+									"value": " 言語"
+								}
+							}
+						]
 					}
 				},
 			],
@@ -754,6 +845,22 @@
 						"replace": {
 							"value": "起票"
 						}
+					}
+				},
+				{
+					"selector": {
+						"value": "details summary[role='button']",
+						"all": true
+					},
+					"text": {
+						"matches": [
+							{
+								"pattern": "New issue",
+								"replace": {
+									"value": "起票"
+								}
+							},
+						]
 					}
 				},
 				{
