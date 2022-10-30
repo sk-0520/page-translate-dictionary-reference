@@ -7,7 +7,18 @@
 	"settings": {
 		"cSpell.words": [
 			"endregion"
-		]
+		],
+		"workbench.colorCustomizations": {
+			// タイトルバー
+			"titleBar.activeBackground": "#5dff73",
+			"titleBar.activeForeground": "#111",
+			// ステータスバー
+			"statusBar.background": "#5dff73",
+			"statusBar.foreground": "#111",
+			// アクティビティバー
+			"activityBar.background": "#5dff73",
+			"activityBar.foreground": "#111",
+		},
 	},
 	"extensions": {
 		"recommendations": [
