@@ -477,6 +477,28 @@
 						}
 					}
 				},
+				{
+					"selector": {
+						"value": ".contribution-activity-listing h3 span",
+						"all": true,
+					},
+					"text": {
+						"matches": [
+							{
+								"mode": "regex",
+								"pattern": "(?<MONTH>\\w+)\\s+(?<YEAR>[0-9]+)",
+								"replace": {
+									"value": "$<YEAR>-$<MONTH>",
+									"map": {
+										"MONTH": {
+											"September": "9月"
+										}
+									}
+								}
+							}
+						]
+					}
+				},
 				//#endregion
 				//#region リポジトリ
 				{
