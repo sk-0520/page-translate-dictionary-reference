@@ -199,12 +199,27 @@
 				},
 				{
 					"selector": {
-						"value": "a[href$='?tab=achievements'"
+						"value": "a[href$='?tab=achievements']"
 					},
 					"text": {
 						"replace": {
 							"value": "実績"
 						}
+					}
+				},
+				{
+					"selector": {
+						"value": ".js-profile-editable-replace details summary[role='button']"
+					},
+					"text": {
+						"matches": [
+							{
+								"pattern": "Block or Report",
+								"replace": {
+									"value": "ブロックまたは報告"
+								}
+							}
+						]
 					}
 				},
 				//#endregion
@@ -1024,6 +1039,13 @@
 							"pattern": "(?<TIME>\\d) days ago",
 							"replace": {
 								"value": "$<TIME> 日前"
+							}
+						},
+						{
+							"mode": "perfect",
+							"pattern": "last month",
+							"replace": {
+								"value": "先月"
 							}
 						},
 						{
