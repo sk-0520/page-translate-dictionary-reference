@@ -486,7 +486,7 @@
 						"matches": [
 							{
 								"mode": "regex",
-								"pattern": "(?<MONTH>\\w+)\\s+(?<YEAR>[0-9]+)",
+								"pattern": "(?<MONTH>\\w+)\\s+(\\d+,\\s+)?(?<YEAR>[1-9][0-9][0-9][0-9])",
 								"replace": {
 									"value": "$<YEAR>年 $<MONTH>月",
 									"regex": {
@@ -507,6 +507,54 @@
 									}
 								}
 							}
+						]
+					}
+				},
+				{
+					"selector": {
+						"value": ".contribution-activity-listing .TimelineItem-body details summary > span",
+						"all": true,
+					},
+					"text": {
+						"matches": [
+							{
+								"mode": "regex",
+								"pattern": "Created\\s+(?<COMMIT>\\d+)\\s+commits?\\s+in\\s+(?<REPOSITORY>\\d+)\\s+repositor(ies|y)",
+								"replace": {
+									"value": "$<REPOSITORY> リポジトリにおいて $<COMMIT> コミットが行われました"
+								}
+							},
+							{
+								"mode": "regex",
+								"pattern": "Created\\s+(?<REPOSITORY>\\d+)\\s+repositories",
+								"replace": {
+									"value": "リポジトリが $<REPOSITORY> 個作成されました"
+								}
+							},
+							{
+								"mode": "regex",
+								"pattern": "Created\\s+(?<REPOSITORY>\\d+)\\s+repositories",
+								"replace": {
+									"value": "リポジトリが $<REPOSITORY> 個作成されました"
+								}
+							},
+						]
+					}
+				},
+				{
+					"selector": {
+						"value": ".contribution-activity-listing .TimelineItem-body details :not(summary) a[href*='commits?']",
+						"all": true,
+					},
+					"text": {
+						"matches": [
+							{
+								"mode": "regex",
+								"pattern": "(?<COMMIT>\\d+)\\s+commits?",
+								"replace": {
+									"value": "$<COMMIT> コミット"
+								}
+							},
 						]
 					}
 				},
@@ -538,17 +586,73 @@
 				},
 				{
 					"selector": {
-						"value": "#type-options span:nth-child(1)"
+						"value": "#type-options summary > span"
 					},
 					"text": {
 						"replace": {
-							"value": "種類"
+							"value": "タイプ"
 						}
 					}
 				},
 				{
 					"selector": {
-						"value": "#language-options span:nth-child(1)"
+						"value": "#type-options [role='menu'] header > span"
+					},
+					"text": {
+						"replace": {
+							"value": "絞り込み(タイプ)"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "#type-options [role='menu'] [role='menuitemradio'] .text-normal",
+						"all": true,
+					},
+					"text": {
+						"matches": [
+							{
+								"pattern": "All",
+								"replace": {
+									"value": "全て"
+								}
+							},
+							{
+								"pattern": "Sources",
+								"replace": {
+									"value": "ソース"
+								}
+							},
+							{
+								"pattern": "Forks",
+								"replace": {
+									"value": "フォーク"
+								}
+							},
+							{
+								"pattern": "Archived",
+								"replace": {
+									"value": "アーカイブ"
+								}
+							},
+							{
+								"pattern": "Mirrors",
+								"replace": {
+									"value": "ミラー"
+								}
+							},
+							{
+								"pattern": "Templates",
+								"replace": {
+									"value": "テンプレート"
+								}
+							},
+						]
+					}
+				},
+				{
+					"selector": {
+						"value": "#language-options summary > span"
 					},
 					"text": {
 						"replace": {
@@ -558,12 +662,60 @@
 				},
 				{
 					"selector": {
-						"value": "#sort-options span:nth-child(1)"
+						"value": "#language-options [role='menu'] header > span"
+					},
+					"text": {
+						"replace": {
+							"value": "絞り込み(言語)"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "#sort-options summary > span"
 					},
 					"text": {
 						"replace": {
 							"value": "ソート"
 						}
+					}
+				},
+				{
+					"selector": {
+						"value": "#sort-options [role='menu'] header > span"
+					},
+					"text": {
+						"replace": {
+							"value": "並び順"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "#sort-options [role='menu'] [role='menuitemradio'] .text-normal",
+						"all": true,
+					},
+					"text": {
+						"matches": [
+							{
+								"pattern": "Last updated",
+								"replace": {
+									"value": "最終更新"
+								}
+							},
+							{
+								"pattern": "Name",
+								"replace": {
+									"value": "名前"
+								}
+							},
+							{
+								"pattern": "Star",
+								"replace": {
+									"value": "スター"
+								}
+							},
+						]
 					}
 				},
 				//#endregion
@@ -980,10 +1132,10 @@
 				"text": {
 					"matches": [
 						{
-							"mode": "regex",
-							"pattern": "\\bUpdated\\b",
+							"mode": "perfect",
+							"pattern": "Updated",
 							"replace": {
-								"value": "更新日",
+								"value": "更新日 ",
 							}
 						}
 					],
