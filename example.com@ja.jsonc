@@ -5,7 +5,7 @@
 	"version": "0.00.002",
 	// 設定情報
 	"information": {
-		"repository": "https://github.com/sk-0520/page-translate-dictionary-reference"
+		"repository": "https://github.com/sk-0520/page-translation-dictionary-reference"
 	},
 	// 対象ドメイン
 	"hosts": [
