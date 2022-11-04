@@ -37,10 +37,13 @@
 			"activityBar.background": "#5dff73",
 			"activityBar.foreground": "#111",
 		},
+		"liveServer.settings.NoBrowser": true,
+		"liveServer.settings.root": "dist",
 	},
 	"extensions": {
 		"recommendations": [
-			"ritwickdey.LiveServer"
+			"ritwickdey.liveserver",
+			"streetsidesoftware.code-spell-checker"
 		]
 	}
 }
