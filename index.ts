@@ -2,11 +2,13 @@ import path from 'path';
 import fs from 'fs';
 
 import ExampleCom from './webpage/example.com/example.com';
+import GitHubCom from './webpage/github.com/github.com';
 
 const outputDirectory = path.resolve(__dirname, 'dist');
 
 const dictionaries = [
 	new ExampleCom(),
+	new GitHubCom(),
 ].map(i => {
 	return i.create();
 }).map(i => ({
@@ -14,7 +16,7 @@ const dictionaries = [
 	setting: i,
 }));
 
-if(!fs.existsSync(outputDirectory)) {
+if (!fs.existsSync(outputDirectory)) {
 	fs.mkdirSync(outputDirectory);
 }
 

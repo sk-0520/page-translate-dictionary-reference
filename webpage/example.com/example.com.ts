@@ -1,5 +1,5 @@
-import * as webpage from '../webpage';
 import * as setting from '../../page-translation-dictionary/source/scripts/extension/setting';
+import * as webpage from '../webpage';
 
 export default class ExampleCom implements webpage.SettingFactory {
 	//#region SettingFactory
