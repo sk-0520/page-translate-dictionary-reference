@@ -1093,6 +1093,24 @@
 						]
 					}
 				},
+				// タイトル編集
+				{
+					"selector": {
+						"value": ".gh-header-actions button",
+						"watch": true,
+					},
+					"text": {
+						"matches": [
+							{
+								"pattern": "Edit",
+								"replace": {
+									"value": "編集"
+								}
+							}
+						]
+					}
+				},
+				// 閉じる・コメント
 				{
 					"selector": {
 						"value": "#partial-new-comment-form-actions button[name='comment_and_close']"
