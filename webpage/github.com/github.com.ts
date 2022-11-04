@@ -50,7 +50,6 @@ export default class GitHubCom implements webpage.SettingFactory {
 		for (const [key, value] of CommonTextSetting) {
 			result.common!.text![CommonText[key]] = value;
 		}
-		console.log(CommonQuerySetting);
 		for (const [key, value] of CommonQuerySetting) {
 			result.common!.query![CommonQuery[key]] = value;
 		}
