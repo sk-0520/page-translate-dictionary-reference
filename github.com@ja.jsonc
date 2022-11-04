@@ -88,19 +88,31 @@
 						}
 					}
 				},
-				/*
-				value 変えるの良くないって
+				//*
+				//value 変えるの良くないって
 				{
 					"selector": {
 						"value": "input[type='submit']",
 					},
-					"value": {
-						"replace": {
-							"value": "サインイン"
-						}
+					"attributes": {
+						"value": {
+							"replace": {
+								"value": "サインイン"
+							}
+						},
+						"data-signin-label": {
+							"replace": {
+								"value": "サインイン"
+							}
+						},
+						"data-disable-with": {
+							"replace": {
+								"value": "サインイン中..."
+							}
+						},
 					}
 				},
-				*/
+				//*/
 			],
 		},
 		// ユーザーページ(組織は構造が違うので辛いんだわ)
