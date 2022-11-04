@@ -118,7 +118,7 @@ export const CommonQuerySetting = new Map<CommonQuery, setting.QuerySetting>([
 	[CommonQuery.QUERY_RELATIVE_TIME, {
 		selector: {
 			value: "relative-time, time-ago",
-			all: true
+			all: true,
 		},
 		text: {
 			matches: [
