@@ -14,7 +14,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: "nav a[data-tab-item='overview']",
-						node: webpage.TextNode.All,
+						node: 2,
 						all: true,
 					},
 					text: {
@@ -26,7 +26,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: "nav a[data-tab-item='repositories']",
-						node: webpage.TextNode.All,
+						node: 2,
 						all: true,
 					},
 					text: {
@@ -38,7 +38,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: "nav a[data-tab-item='projects']",
-						node: webpage.TextNode.All,
+						node: 2,
 						all: true,
 					},
 					text: {
@@ -50,7 +50,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: "nav a[data-tab-item='packages']",
-						node: webpage.TextNode.All,
+						node: 2,
 						all: true,
 					},
 					text: {
@@ -62,7 +62,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: "nav a[data-tab-item='stars']",
-						node: webpage.TextNode.All,
+						node: 2,
 						all: true,
 					},
 					text: {
@@ -497,7 +497,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: "a[href='/new']",
-						node: webpage.TextNode.All,
+						node: 2,
 						all: true
 					},
 					text: {

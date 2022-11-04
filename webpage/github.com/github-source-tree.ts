@@ -137,7 +137,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: ".file-navigation get-repo .text-bold",
-						node: webpage.TextNode.All
+						node: 2
 					},
 					text: {
 						replace: {
@@ -158,7 +158,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: ".Layout-sidebar a[href$='#readme']",
-						node: webpage.TextNode.All
+						node: 2
 					},
 					text: {
 						replace: {

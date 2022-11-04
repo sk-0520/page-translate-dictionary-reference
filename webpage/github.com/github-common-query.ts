@@ -190,7 +190,7 @@ export const CommonQuerySetting = new Map<CommonQuery, setting.QuerySetting>([
 		selector: {
 			mode: "normal",
 			value: "form[action$='/profile_pin'] button",
-			node: webpage.TextNode.All
+			node: 2
 		},
 		text: {
 			matches: [
@@ -214,7 +214,7 @@ export const CommonQuerySetting = new Map<CommonQuery, setting.QuerySetting>([
 	[CommonQuery.QUERY_REPOSITORY_HEADER_WATCH, {
 		selector: {
 			value: ".pagehead-actions li:nth-child(1) a",
-			node: webpage.TextNode.All
+			node: 2
 		},
 		text: {
 			matches: [
@@ -230,7 +230,7 @@ export const CommonQuerySetting = new Map<CommonQuery, setting.QuerySetting>([
 	[CommonQuery.QUERY_REPOSITORY_HEADER_FORK, {
 		selector: {
 			value: ".pagehead-actions li:nth-child(2) a",
-			node: webpage.TextNode.All
+			node: 2
 		},
 		text: {
 			replace: {
