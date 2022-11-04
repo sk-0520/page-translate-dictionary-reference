@@ -1,4 +1,5 @@
 import * as setting from '../../page-translation-dictionary/source/scripts/extension/setting';
+import * as webpage from '../webpage';
 //import { CommonText } from './github-common-text';
 
 export enum CommonQuery {
@@ -61,7 +62,7 @@ export const CommonQuerySetting = new Map<CommonQuery, setting.QuerySetting>([
 	[CommonQuery.QUERY_UPDATED, {
 		selector: {
 			value: ".color-fg-muted",
-			node: -1,
+			node: webpage.TextNode.FirstOccurrence,
 			all: true
 		},
 		text: {
@@ -189,7 +190,7 @@ export const CommonQuerySetting = new Map<CommonQuery, setting.QuerySetting>([
 		selector: {
 			mode: "normal",
 			value: "form[action$='/profile_pin'] button",
-			node: 2
+			node: webpage.TextNode.All
 		},
 		text: {
 			matches: [
@@ -213,7 +214,7 @@ export const CommonQuerySetting = new Map<CommonQuery, setting.QuerySetting>([
 	[CommonQuery.QUERY_REPOSITORY_HEADER_WATCH, {
 		selector: {
 			value: ".pagehead-actions li:nth-child(1) a",
-			node: 2
+			node: webpage.TextNode.All
 		},
 		text: {
 			matches: [
@@ -229,7 +230,7 @@ export const CommonQuerySetting = new Map<CommonQuery, setting.QuerySetting>([
 	[CommonQuery.QUERY_REPOSITORY_HEADER_FORK, {
 		selector: {
 			value: ".pagehead-actions li:nth-child(2) a",
-			node: 2
+			node: webpage.TextNode.All
 		},
 		text: {
 			replace: {

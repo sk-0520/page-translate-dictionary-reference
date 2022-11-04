@@ -24,7 +24,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: "nav[aria-label='Issue'] a:nth-child(1)",
-						node: 2,
+						node: webpage.TextNode.All,
 					},
 					text: {
 						replace: {
@@ -35,7 +35,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: "nav[aria-label='Issue'] a:nth-child(2)",
-						node: 2,
+						node: webpage.TextNode.All,
 					},
 					text: {
 						replace: {

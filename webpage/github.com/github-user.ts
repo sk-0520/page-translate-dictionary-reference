@@ -14,7 +14,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: "nav a[data-tab-item='overview']",
-						node: 2,
+						node: webpage.TextNode.All,
 						all: true,
 					},
 					text: {
@@ -26,7 +26,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: "nav a[data-tab-item='repositories']",
-						node: 2,
+						node: webpage.TextNode.All,
 						all: true,
 					},
 					text: {
@@ -38,7 +38,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: "nav a[data-tab-item='projects']",
-						node: 2,
+						node: webpage.TextNode.All,
 						all: true,
 					},
 					text: {
@@ -50,7 +50,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: "nav a[data-tab-item='packages']",
-						node: 2,
+						node: webpage.TextNode.All,
 						all: true,
 					},
 					text: {
@@ -62,7 +62,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: "nav a[data-tab-item='stars']",
-						node: 2,
+						node: webpage.TextNode.All,
 						all: true,
 					},
 					text: {
@@ -132,7 +132,7 @@ export default function get(): webpage.PathPair {
 				{
 				selector: {
 					value: "nav[aria-label='Organization'] a[href$='/repositories']",
-					node: -1
+					node: webpage.TextNode.FirstOccurrence
 					},
 				text: {
 					matches: {
@@ -146,7 +146,7 @@ export default function get(): webpage.PathPair {
 				{
 				selector: {
 					value: "nav a[href$='/projects']",
-					node: 2
+					webpage.TextNode.All
 					},
 				text: {
 					replace: {
@@ -157,7 +157,7 @@ export default function get(): webpage.PathPair {
 				{
 				selector: {
 					value: "nav a[href$='/packages']",
-					node: 2
+					webpage.TextNode.All
 					},
 				text: {
 					replace: {
@@ -352,7 +352,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: ".js-yearly-contributions .float-right.color-fg-muted",
-						node: -2
+						node: webpage.TextNode.All
 					},
 					text: {
 						matches: [
@@ -497,7 +497,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: "a[href='/new']",
-						node: 2,
+						node: webpage.TextNode.All,
 						all: true
 					},
 					text: {
