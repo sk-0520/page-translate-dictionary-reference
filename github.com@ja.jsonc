@@ -1095,6 +1095,107 @@
 				},
 				{
 					"selector": {
+						"value": "#partial-new-comment-form-actions button[name='comment_and_close']"
+					},
+					"attributes": {
+						"data-comment-text": {
+							"matches": [
+								{
+									"pattern": "Close Issue",
+									"replace": {
+										"mode": "common",
+										"value": "TEXT_ISSUE_CLOSE"
+									}
+								},
+								{
+									"pattern": "Close with comment",
+									"replace": {
+										"mode": "common",
+										"value": "TEXT_ISSUE_CLOSE_WITH_COMMENT"
+									}
+								}
+							],
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "#partial-new-comment-form-actions button[name='comment_and_close'] span",
+					},
+					"text": {
+						"matches": [
+							{
+								"pattern": "Close Issue",
+								"replace": {
+									"mode": "common",
+									"value": "TEXT_ISSUE_CLOSE"
+								}
+							},
+							{
+								"pattern": "Close with comment",
+								"replace": {
+									"mode": "common",
+									"value": "TEXT_ISSUE_CLOSE_WITH_COMMENT"
+								}
+							},
+						],
+					},
+					"attributes": {
+						"data-default-action-text": {
+							"matches": [
+								{
+									"pattern": "Close Issue",
+									"replace": {
+										"mode": "common",
+										"value": "TEXT_ISSUE_CLOSE"
+									}
+								},
+								{
+									"pattern": "Close with comment",
+									"replace": {
+										"mode": "common",
+										"value": "TEXT_ISSUE_CLOSE_WITH_COMMENT"
+									}
+								}
+							],
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "#partial-new-comment-form-actions button[name='comment_and_open'] [data-target='reopen-button.reopened'] span"
+					},
+					"text": {
+						"replace": {
+							"mode": "common",
+							"value": "TEXT_ISSUE_REOPEN_REOPENED"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "#partial-new-comment-form-actions button[name='comment_and_open'] [data-target='reopen-button.notPlanned'] span"
+					},
+					"text": {
+						"replace": {
+							"mode": "common",
+							"value": "TEXT_ISSUE_REOPEN_NOT_PLANNED"
+						}
+					}
+				},
+				{
+					"selector": {
+						"value": "#partial-new-comment-form-actions button[name='comment_and_open'] [data-target='reopen-button.completed'] span"
+					},
+					"text": {
+						"replace": {
+							"mode": "common",
+							"value": "TEXT_ISSUE_REOPEN_COMPLETED"
+						}
+					}
+				},
+				{
+					"selector": {
 						"value": "a[href$='/milestones/new']",
 					},
 					"text": {
@@ -1107,33 +1208,31 @@
 		}
 	},
 	"common": {
-		"selector": {
-			"SEARCH": "header[role='banner'] input[name='q']",
-			"LOGIN": "header a[href^='/login']",
-		},
+		"selector": {},
 		"text": {
-			"SEARCH_GITHUB": "GitHubから検索",
-			"LOGIN": "ログイン"
+			"TEXT_ISSUE_CLOSE": "閉じる",
+			"TEXT_ISSUE_CLOSE_WITH_COMMENT": "追記して閉じる",
+			"TEXT_ISSUE_REOPEN_REOPENED": "再オープン",
+			"TEXT_ISSUE_REOPEN_NOT_PLANNED": "解決せずに閉じる", // 訳が微妙。本題じゃないから閉じた的なことだとは思うけど
+			"TEXT_ISSUE_REOPEN_COMPLETED": "解決して閉じる",
 		},
 		"query": {
 			"QUERY_SEARCH": {
 				"selector": {
-					"mode": "common",
-					"value": "SEARCH"
+					"value": "header[role='banner'] input[name='q']"
 				},
 				"attributes": {
 					"placeholder": {
 						"replace": {
 							"mode": "common",
-							"value": "SEARCH_GITHUB"
+							"value": "GitHubから検索"
 						}
 					}
 				}
 			},
 			"QUERY_LOGIN": {
 				"selector": {
-					"mode": "common",
-					"value": "LOGIN"
+					"value": "header a[href^='/login']"
 				},
 				"text": {
 					"replace": {
