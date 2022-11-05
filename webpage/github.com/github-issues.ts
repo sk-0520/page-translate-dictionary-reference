@@ -492,6 +492,35 @@ export default function get(): webpage.PathPair {
 						]
 					}
 				},
+				// タイトル編集保存
+				{
+					selector: {
+						value: ".js-issue-update button",
+					},
+					text: {
+						replace: {
+							value: "保存"
+						}
+					},
+					attributes: {
+						"data-disable-with": {
+							replace: {
+								value: "更新中"
+							}
+						}
+					}
+				},
+				{
+					selector: {
+						value: ".js-issue-update button:nth-child(2)",
+					},
+					text: {
+						replace: {
+							value: "取消"
+						}
+					},
+				},
+
 				// 閉じる
 				{
 					selector: {
