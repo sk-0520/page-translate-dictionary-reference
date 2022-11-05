@@ -10,6 +10,78 @@ export default function get(): webpage.PathPair {
 		pattern: /^\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)((\/tree?\/?)|(\/?$))/,
 		setting: {
 			query: [
+				//#region ソースなし
+				// 非ログイン
+				{
+					selector: {
+						value: ".blankslate h3"
+					},
+					text: {
+						replace: {
+							value: "このリポジトリは空っぽです！"
+						}
+					}
+				},
+				// めんどい
+				/*
+				{
+					selector: {
+						value: ".blankslate p",
+						node: webpage.TextNode.All
+					},
+					text: {
+						matches: [
+							{
+								pattern: "",
+								replace: {
+									value: ""
+								}
+							},
+							{
+								pattern: "",
+								replace: {
+									value: ""
+								}
+							},
+						]
+					}
+				},
+				{
+					selector: {
+						value: ".blankslate p a",
+					},
+					text: {
+						replace: {
+							value: ""
+						}
+					}
+				},
+				//*/
+				// ログイン済み
+				{
+					selector: {
+						value: "git-clone-help h3 strong"
+					},
+					text: {
+						replace: {
+							// Quick setup: すばやく？ 簡易？ ぱぱっと？ えいや！
+							value: "簡易構築"
+						}
+					}
+				},
+				{
+					selector: {
+						value: "git-clone-help h3",
+						node:1
+					},
+					text: {
+						replace: {
+							value: " — 構築処理を理解している場合の方法"
+						}
+					}
+				},
+				//#endregion
+				//#region ソースあり
 				{
 					selector: {
 						value: "#branch-select-menu summary + .SelectMenu .SelectMenu-title"
@@ -237,6 +309,7 @@ export default function get(): webpage.PathPair {
 						]
 					}
 				},
+				//#endregion
 			],
 			import: [
 				//
