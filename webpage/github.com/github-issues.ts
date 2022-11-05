@@ -4,13 +4,15 @@ import { CommonQuery } from './github-common-query';
 import { CommonText } from './github-common-text';
 
 /**
- * 課題
+ * 課題一覧/課題詳細/プルリク
  */
 export default function get(): webpage.PathPair {
 	return {
 		pattern: /^\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)\/(issues(\/(\\d+)|(new))?)|(labels)|(milestones)|(pulls)/,
 		setting: {
 			query: [
+				//#region 課題一覧
+				// ヘッダ
 				{
 					selector: {
 						value: "#filters-select-menu summary",
@@ -19,6 +21,79 @@ export default function get(): webpage.PathPair {
 					text: {
 						replace: {
 							value: "フィルタ"
+						}
+					}
+				},
+				{
+					selector: {
+						value: "#filters-select-menu summary + .SelectMenu .SelectMenu-title"
+					},
+					text: {
+						replace: {
+							value: "絞り込み"
+						}
+					}
+				},
+				{
+					selector: {
+						value: "#filters-select-menu .SelectMenu-list .SelectMenu-item",
+						node: webpage.TextNode.FirstOccurrence,
+						all: true
+					},
+					text: {
+						matches: [
+							{
+								pattern: "Open issues and pull requests",
+								replace: {
+									value: "開かれている課題とプルリクエスト"
+								}
+							},
+							{
+								pattern: "Your issues",
+								replace: {
+									value: "あなたの課題"
+								}
+							},
+							{
+								pattern: "Your pull requests",
+								replace: {
+									value: "あなたのプルリクエスト"
+								}
+							},
+							{
+								pattern: "Everything assigned to you",
+								replace: {
+									value: "あなたに割り当てられた一覧"
+								}
+							},
+							{
+								pattern: "Everything mentioning you",
+								replace: {
+									value: "あなたに関係する一覧"
+								}
+							},
+						]
+					}
+				},
+				{
+					selector: {
+						value: "#filters-select-menu a[href$='/articles/searching-issues'] strong",
+					},
+					text: {
+						replace: {
+							value: "検索方法について"
+						}
+					}
+				},
+				{
+					selector: {
+						value: "#js-issues-search"
+					},
+					attributes: {
+						"placeholder": {
+							replace: {
+								value: "全ての課題を検索"
+							}
 						}
 					}
 				},
@@ -70,6 +145,158 @@ export default function get(): webpage.PathPair {
 						]
 					}
 				},
+				// フィルター Open/Close
+				{
+					selector: {
+						value: "#js-issues-toolbar .table-list-filters .table-list-header-toggle:nth-child(1) a",
+						all: true,
+						node: webpage.TextNode.FirstOccurrence,
+					},
+					text: {
+						matches: [
+							{
+								mode: "regex",
+								pattern: /(?<COUNT>[0-9]+)\s+Open/.source,
+								replace: {
+									value: "未解決: $<COUNT>"
+								}
+							},
+							{
+								mode: "regex",
+								pattern: /(?<COUNT>[0-9]+)\s+Closed/.source,
+								replace: {
+									value: "終了済: $<COUNT>"
+								}
+							}
+						],
+					}
+				},
+				// フィルタ チェック処理
+				{
+					selector: {
+						value: "#js-issues-toolbar .table-list-triage span.color-fg-muted",
+						node: 2
+					},
+					text: {
+						replace: {
+							value: "個 選択中"
+						}
+					}
+				},
+				// フィルタ: 絞り込み
+				{
+					selector: {
+						value: "#js-issues-toolbar .table-list-filters .table-list-header-toggle:nth-child(2) details summary",
+						all: true,
+						node: webpage.TextNode.FirstOccurrence,
+					},
+					text: {
+						matches: [
+							{
+								pattern: "Author",
+								replace: {
+									value: "起票者",
+								}
+							},
+							{
+								pattern: "Label",
+								replace: {
+									value: "ラベル",
+								}
+							},
+							{
+								pattern: "Projects",
+								replace: {
+									value: "プロジェクト",
+								}
+							},
+							{
+								pattern: "Milestones",
+								replace: {
+									value: "マイルストーン",
+								}
+							},
+							{
+								pattern: "Assignee",
+								replace: {
+									value: "担当者",
+								}
+							},
+							{
+								pattern: "Sort",
+								replace: {
+									value: "ソート",
+								}
+							},
+						],
+					}
+				},
+				// フィルタ: 選択中の適用
+				{
+					selector: {
+						value: "#js-issues-toolbar .table-list-triage .table-list-header-toggle details summary",
+						all: true,
+						node: webpage.TextNode.FirstOccurrence,
+					},
+					text: {
+						matches: [
+							{
+								pattern: "Mark as",
+								replace: {
+									value: "変更",
+								}
+							},
+							{
+								pattern: "Label",
+								replace: {
+									value: "ラベル",
+								}
+							},
+							{
+								pattern: "Milestone",
+								replace: {
+									value: "マイルストーン",
+								}
+							},
+							{
+								pattern: "Assign",
+								replace: {
+									value: "担当者",
+								}
+							},
+						],
+					}
+				},
+				// フィルタ: 選択中の適用 プロジェクト（こいつだけよく分からん）
+				{
+					selector: {
+						value: "#js-issues-toolbar .table-list-triage .table-list-header-toggle details summary span",
+						all: true,
+					},
+					text: {
+						matches: [
+							{
+								pattern: "Projects",
+								replace: {
+									value: "プロジェクト",
+								}
+							},
+						],
+					}
+				},
+				{
+
+				},
+				{
+
+				},
+				{
+
+				},
+				//#endregion
+				//#region 課題作成
+				//#endregion
+				//#region 課題詳細
 				// タイトル編集
 				{
 					selector: {
@@ -87,7 +314,7 @@ export default function get(): webpage.PathPair {
 						]
 					}
 				},
-				// 閉じる・コメント
+				// 閉じる
 				{
 					selector: {
 						value: "#partial-new-comment-form-actions button[name='comment_and_close']"
@@ -191,6 +418,57 @@ export default function get(): webpage.PathPair {
 				},
 				{
 					selector: {
+						value: "#partial-new-comment-form-actions details .select-menu-item .select-menu-item-text .select-menu-item-heading",
+						node: 1,
+						all: true,
+					},
+					text: {
+						matches: [
+							{
+								pattern: "Close as completed",
+								replace: {
+									mode: "common",
+									value: CommonText[CommonText.TEXT_ISSUE_REOPEN_COMPLETED],
+								}
+							},
+							{
+								pattern: "Close as not planned",
+								replace: {
+									mode: "common",
+									value: CommonText[CommonText.TEXT_ISSUE_REOPEN_NOT_PLANNED],
+								}
+							}
+						]
+					}
+				},
+				// コメント
+				{
+					selector: {
+						value: "#partial-new-comment-form-actions button.btn-primary[type='submit']"
+					},
+					text: {
+						replace: {
+							value: "コメント"
+						}
+					}
+				},
+				//#endregion
+				//#region ラベル
+				{
+					selector: {
+						value: ".labels-list button.js-details-target-new-label",
+						all: true,
+					},
+					text: {
+						replace: {
+							value: "ラベル作成"
+						}
+					}
+				},
+				//#endregion
+				//#region マイルストーン
+				{
+					selector: {
 						value: "a[href$='/milestones/new']",
 					},
 					text: {
@@ -199,6 +477,7 @@ export default function get(): webpage.PathPair {
 						}
 					}
 				},
+				//#endregion
 			],
 			import: [
 				//

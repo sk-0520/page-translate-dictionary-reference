@@ -25,6 +25,12 @@ export default class GitHubCom implements webpage.SettingFactory {
 			],
 			level: 0,
 			language: 'ja',
+			watch: {
+				document: [
+					'pjax:end',
+					'turbo:render',
+				]
+			},
 			path: {},
 			common: {
 				selector: {},
