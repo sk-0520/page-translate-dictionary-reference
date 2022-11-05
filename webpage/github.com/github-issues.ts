@@ -99,6 +99,17 @@ export default function get(): webpage.PathPair {
 				},
 				{
 					selector: {
+						value: ".issues-reset-query",
+						node: 2
+					},
+					text: {
+						replace: {
+							value: "現在の検索条件とフィルタ・ソートを解除"
+						}
+					}
+				},
+				{
+					selector: {
 						value: "nav[aria-label='Issue'] a:nth-child(1)",
 						node: 2,
 					},
@@ -284,30 +295,181 @@ export default function get(): webpage.PathPair {
 						],
 					}
 				},
-				// {
-				// 	selector: {
-				// 		value: "#js-issues-toolbar summary + .SelectMenu .SelectMenu-title",
-				// 		all: true
-				// 	},
-				// 	text: {
-				// 		matches: [
-				// 			{
-				// 				pattern: "Sort by",
-				// 				replace: {
-				// 					value: "並び替え"
-				// 				}
-				// 			}
-				// 		],
-				// 		// replace: {
-				// 		// 	value: "絞り込み"
-				// 		// }
-				// 	}
-				// },
 				{
-
+					selector: {
+						value: "#js-issues-toolbar summary + .SelectMenu .SelectMenu-title",
+						all: true
+					},
+					text: {
+						matches: [
+							{
+								pattern: "Sort by",
+								replace: {
+									value: "並び替え"
+								}
+							},
+							{
+								// 正規表現使えば XX で絞り込み には出来るけどしんどい
+								pattern: "Filter by",
+								replace: {
+									value: "絞り込み"
+								}
+							}
+						],
+					}
 				},
 				{
-
+					selector: {
+						value: "#author-filter-field"
+					},
+					attributes: {
+						"placeholder": {
+							replace: {
+								value: "起票者"
+							}
+						}
+					}
+				},
+				{
+					selector: {
+						value: "#label-filter-field"
+					},
+					attributes: {
+						"placeholder": {
+							replace: {
+								value: "ラベル"
+							}
+						}
+					}
+				},
+				{
+					selector: {
+						value: "#label-select-menu details-menu .SelectMenu-item strong"
+					},
+					text: {
+						replace: {
+							value: "未設定"
+						}
+					}
+				},
+				{
+					selector: {
+						value: "project-picker input"
+					},
+					attributes: {
+						"placeholder": {
+							replace: {
+								value: "プロジェクト"
+							}
+						}
+					}
+				},
+				{
+					selector: {
+						value: "#milestones-filter-field"
+					},
+					attributes: {
+						"placeholder": {
+							replace: {
+								value: "マイルストーン"
+							}
+						}
+					}
+				},
+				{
+					selector: {
+						value: "#milestones-select-menu details-menu .SelectMenu-item strong"
+					},
+					text: {
+						replace: {
+							value: "未設定"
+						}
+					}
+				},
+				{
+					selector: {
+						value: "#assigns-filter-field"
+					},
+					attributes: {
+						"placeholder": {
+							replace: {
+								value: "担当者"
+							}
+						}
+					}
+				},
+				{
+					selector: {
+						value: "#assignees-select-menu details-menu .SelectMenu-item strong"
+					},
+					text: {
+						replace: {
+							value: "未設定"
+						}
+					}
+				},
+				// ソート
+				{
+					selector: {
+						value: "#sort-select-menu details-menu .SelectMenu-item span",
+						all: true,
+					},
+					text: {
+						matches: [
+							{
+								pattern: "Newest",
+								replace: {
+									value: "新しい順"
+								}
+							},
+							{
+								pattern: "Oldest",
+								replace: {
+									value: "古い順"
+								}
+							},
+							{
+								pattern: "Most commented",
+								replace: {
+									value: "コメントが多い順"
+								}
+							},
+							{
+								pattern: "Least commented",
+								replace: {
+									value: "直近でコメントされた順"
+								}
+							},
+							{
+								pattern: "Recently updated",
+								replace: {
+									value: "更新された順"
+								}
+							},
+							{
+								pattern: "Least recently updated",
+								replace: {
+									value: "直近で更新された順"
+								}
+							},
+							// {
+							// 	pattern: "Best match",
+							// 	replace: {
+							// 		value: "何に対してベストなのか・・・"
+							// 	}
+							// },
+						]
+					}
+				},
+				{
+					selector: {
+						value: "#sort-select-menu details-menu .SelectMenu-divider",
+					},
+					text: {
+						replace: {
+							value: "リアクション順"
+						}
+					}
 				},
 				//#endregion
 				//#region 課題作成
