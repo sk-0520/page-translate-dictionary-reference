@@ -284,9 +284,25 @@ export default function get(): webpage.PathPair {
 						],
 					}
 				},
-				{
-
-				},
+				// {
+				// 	selector: {
+				// 		value: "#js-issues-toolbar summary + .SelectMenu .SelectMenu-title",
+				// 		all: true
+				// 	},
+				// 	text: {
+				// 		matches: [
+				// 			{
+				// 				pattern: "Sort by",
+				// 				replace: {
+				// 					value: "並び替え"
+				// 				}
+				// 			}
+				// 		],
+				// 		// replace: {
+				// 		// 	value: "絞り込み"
+				// 		// }
+				// 	}
+				// },
 				{
 
 				},

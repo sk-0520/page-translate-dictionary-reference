@@ -1,12 +1,14 @@
 import path from 'path';
 import fs from 'fs';
 
+import Localhost from './webpage/localhost/localhost';
 import ExampleCom from './webpage/example.com/example.com';
 import GitHubCom from './webpage/github.com/github.com';
 
 const outputDirectory = path.resolve(__dirname, 'dist');
 
 const dictionaries = [
+	new Localhost(),
 	new ExampleCom(),
 	new GitHubCom(),
 ].map(i => {
