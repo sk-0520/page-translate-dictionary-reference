@@ -473,8 +473,232 @@ export default function get(): webpage.PathPair {
 				},
 				//#endregion
 				//#region 課題作成
+				// タイトル
+				{
+					selector: {
+						value: "#issue_title[name='issue[title]']"
+					},
+					attributes: {
+						"placeholder": {
+							replace: {
+								value: "件名",
+							}
+						}
+					}
+				},
+				// 新規コメント
+				{
+					selector: {
+						value: "#new_issue button[type='submit']",
+						all: true,
+					},
+					text: {
+						replace: {
+							value: "起票する"
+						}
+					}
+				},
+				//#endregion
+				//#region エディタ（新規・編集・コメント）
+				// タブ: 書き込み
+				{
+					selector: {
+						value: webpage.joinMultiParentSelectors([
+							".js-slash-command-surface",
+							".js-comment-update",
+							".js-new-comment-form",
+						], ".tabnav .tabnav-tabs .write-tab"),
+						all: true,
+					},
+					text: {
+						replace: {
+							value: "書き込み"
+						}
+					}
+				},
+				// タブ: プレビュー
+				{
+					selector: {
+						value: webpage.joinMultiParentSelectors([
+							".js-slash-command-surface",
+							".js-comment-update",
+							".js-new-comment-form",
+						], ".tabnav .tabnav-tabs .preview-tab"),
+						all: true,
+					},
+					text: {
+						replace: {
+							value: "プレビュー"
+						}
+					}
+				},
+				// ツールバー
+				{
+					selector: {
+						value: "markdown-toolbar tool-tip",
+						all: true,
+						node: webpage.TextNode.FirstOccurrence,
+					},
+					text: {
+						matches: [
+							{
+								pattern: "Add heading text",
+								replace: {
+									value: "見出し"
+								}
+							},
+							{
+								mode: 'regex',
+								pattern: /Add bold text,(?<COMMAND>.*)/.source,
+								replace: {
+									value: "重要: $<COMMAND>"
+								}
+							},
+							{
+								mode: 'regex',
+								pattern: /Add italic text,(?<COMMAND>.*)/.source,
+								replace: {
+									value: "強調: $<COMMAND>"
+								}
+							},
+							{
+								mode: 'regex',
+								pattern: /Add a quote,(?<COMMAND>.*)/.source,
+								replace: {
+									value: "引用: $<COMMAND>"
+								}
+							},
+							{
+								mode: 'regex',
+								pattern: /Add code,(?<COMMAND>.*)/.source,
+								replace: {
+									value: "コード: $<COMMAND>"
+								}
+							},
+							{
+								mode: 'regex',
+								pattern: /Add a link,(?<COMMAND>.*)/.source,
+								replace: {
+									value: "リンクの追加: $<COMMAND>"
+								}
+							},
+							{
+								mode: 'regex',
+								pattern: /Add a bulleted list,(?<COMMAND>.*)/.source,
+								replace: {
+									value: "順序なしリスト: $<COMMAND>"
+								}
+							},
+							{
+								mode: 'regex',
+								pattern: /Add a numbered list,(?<COMMAND>.*)/.source,
+								replace: {
+									value: "順序付きリスト: $<COMMAND>"
+								}
+							},
+							{
+								mode: 'regex',
+								pattern: /Add a task list,(?<COMMAND>.*)/.source,
+								replace: {
+									value: "タスクリスト: $<COMMAND>"
+								}
+							},
+							{
+								pattern: "Directly mention a user or team",
+								replace: {
+									value: "メンション"
+								}
+							},
+							{
+								pattern: "Reference an issue, pull request, or discussion",
+								replace: {
+									value: "課題・プルリクエスト・ディスカッションへの参照"
+								}
+							},
+							{
+								pattern: "Add saved reply",
+								replace: {
+									value: "定型文の返答"
+								}
+							},
+
+						]
+					}
+				},
+				{
+					selector: {
+						value: ".write-content textarea",
+						all: true
+					},
+					attributes: {
+						"placeholder": {
+							replace: {
+								value: "コメントを入力"
+							}
+						}
+					}
+				},
+				{
+					selector: {
+						value: ".write-content .manual-file-chooser + span + span span.default",
+						all: true
+					},
+					text: {
+						replace: {
+							value: "ファイル添付: D&Dか貼り付け、クリックで添付出来ます"
+						}
+					}
+				},
 				//#endregion
 				//#region 課題詳細
+				// ステータス
+				{
+					selector: {
+						value: "span.State",
+						all: true,
+						node: webpage.TextNode.FirstOccurrence
+					},
+					text: {
+						matches: [
+							{
+								pattern: "Open",
+								replace: {
+									value: "未解決"
+								}
+							},
+							{
+								pattern: "Closed",
+								replace: {
+									value: "終了"
+								}
+							},
+						]
+					},
+					attributes: {
+						title: {
+							matches: [
+								{
+									pattern: "Open",
+									replace: {
+										value: "未解決"
+									}
+								},
+								{
+									pattern: "Status: Closed",
+									replace: {
+										value: "解決済みで終了"
+									}
+								},
+								{
+									pattern: "Status: Closed as not planned",
+									replace: {
+										value: "未解決で終了"
+									}
+								},
+							]
+						}
+					}
+				},
 				// タイトル編集
 				{
 					selector: {
@@ -520,7 +744,101 @@ export default function get(): webpage.PathPair {
 						}
 					},
 				},
-
+				// コメント メニュー
+				{
+					selector: {
+						value: ".timeline-comment-actions details details-menu .dropdown-item",
+						all: true,
+					},
+					text: {
+						matches: [
+							{
+								pattern: "Copy link",
+								replace: {
+									value: "リンクをコピー"
+								}
+							},
+							{
+								pattern: "Quote reply",
+								replace: {
+									value: "返信"
+								}
+							},
+							{
+								pattern: "Reference in new issue",
+								replace: {
+									value: "新規課題で参照"
+								}
+							},
+							{
+								pattern: "Edit",
+								replace: {
+									value: "編集"
+								}
+							},
+							{
+								pattern: "Hide",
+								replace: {
+									value: "隠す"
+								}
+							},
+							{
+								pattern: "Delete",
+								replace: {
+									value: "削除"
+								}
+							},
+							{
+								pattern: "Report content",
+								replace: {
+									value: "不正利用の報告"
+								}
+							},
+						]
+					},
+					attributes: {
+						"data-confirm": {
+							matches: [
+								{
+									pattern: "delete",
+									replace: {
+										value: "本当に削除してもよろしいですか？"
+									}
+								}
+							]
+						}
+					}
+				},
+				// コメント編集
+				{
+					selector: {
+						value: ".comment-form-actions button.js-comment-cancel-button",
+						all: true
+					},
+					text: {
+						replace: {
+							value: "取消"
+						}
+					},
+					attributes: {
+						"data-confirm-text": {
+							replace: {
+								value: "入力内容は登録されていませんが取り消してもよろしいですか？"
+							}
+						}
+					}
+				},
+				{
+					selector: {
+						value: ".comment-form-actions button[type='submit']",
+						all: true
+					},
+					text: {
+						replace: {
+							value: "コメントを更新"
+						}
+					}
+				},
 				// 閉じる
 				{
 					selector: {
@@ -659,6 +977,130 @@ export default function get(): webpage.PathPair {
 						}
 					}
 				},
+				//#region 右側のやつら
+				// 担当者
+				{
+					selector: {
+						value: "#assignees-select-menu summary",
+						node: 2
+					},
+					text: {
+						replace: {
+							value: "担当者"
+						}
+					}
+				},
+				{
+					selector: {
+						value: ".js-issue-assign-self"
+					},
+					text: {
+						replace: {
+							value: "あなたを割り当てる",
+						}
+					}
+				},
+				{
+					selector: {
+						value: ".js-issue-assignees",
+						node: webpage.TextNode.FirstOccurrence
+					},
+					text: {
+						matches: [
+							{
+								pattern: "No one—",
+								replace: {
+									value: "未割り当て—",
+								}
+							}
+						]
+					}
+				},
+				// ラベル
+				{
+					selector: {
+						value: "#labels-select-menu summary",
+						node: 2
+					},
+					text: {
+						replace: {
+							value: "ラベル"
+						}
+					}
+				},
+				{
+					selector: {
+						value: ".js-issue-labels",
+						node: webpage.TextNode.FirstOccurrence
+					},
+					text: {
+						matches: [
+							{
+								pattern: "None yet",
+								replace: {
+									value: "未割り当て",
+								}
+							}
+						]
+					}
+				},
+				// プロジェクト
+				{
+					selector: {
+						value: "#projects-select-menu summary",
+						node: 2
+					},
+					text: {
+						replace: {
+							value: "プロジェクト"
+						}
+					}
+				},
+				{
+					selector: {
+						value: "#partial-discussion-sidebar .discussion-sidebar-item form[action*='/projects/'] > span",
+						node: webpage.TextNode.FirstOccurrence
+					},
+					text: {
+						matches: [
+							{
+								pattern: "None yet",
+								replace: {
+									value: "未割り当て",
+								}
+							}
+						]
+					}
+				},
+				// マイルストーン
+				{
+					selector: {
+						value: "#milestone-select-menu summary",
+						node: 2
+					},
+					text: {
+						replace: {
+							value: "マイルストーン"
+						}
+					}
+				},
+				{
+					selector: {
+						value: "#partial-discussion-sidebar .discussion-sidebar-item form[action*='/set_milestone?']",
+						node: webpage.TextNode.FirstOccurrence
+					},
+					text: {
+						matches: [
+							{
+								pattern: "No milestone",
+								replace: {
+									value: "未割り当て",
+								}
+							}
+						]
+					}
+				},
+				//#endregion
 				//#endregion
 				//#region ラベル
 				{

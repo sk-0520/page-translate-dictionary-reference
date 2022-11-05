@@ -12,6 +12,15 @@ export enum TextNode {
 	All = -2,
 }
 
+/**
+ * 異なる親セレクタから共通部分のセレクタを結合する。
+ * @param parents
+ * @param selectors
+ */
+export function joinMultiParentSelectors(parents: string[], selectors: string): string {
+	return parents.map(i => i + ' ' + selectors).join(', ');
+}
+
 export interface SettingFactory {
 	//#region function
 
