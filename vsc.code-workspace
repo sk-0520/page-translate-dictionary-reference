@@ -10,7 +10,7 @@
 			"**/obj": true,
 			"**/node_modules": true,
 			".vs": true,
-			"*.lnk": true
+			"*.lnk": true,
 		},
 		"files.watcherExclude": {
 			"**/.git/objects/**": true,
@@ -22,6 +22,7 @@
 			"**/bin/**": true,
 			"**/obj/**": true,
 			"*.lnk": true,
+			"page-translation-dictionary/": true
 		},
 		"cSpell.words": [
 			"endregion"
