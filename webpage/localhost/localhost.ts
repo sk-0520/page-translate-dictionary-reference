@@ -14,7 +14,7 @@ export default class Localhost implements webpage.SettingFactory {
 			hosts: [
 				'localhost:*'
 			],
-			level: 0,
+			priority: 0,
 			language: 'ja',
 			path: {
 				"/": {

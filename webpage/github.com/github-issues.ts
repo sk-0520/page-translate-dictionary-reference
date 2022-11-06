@@ -979,6 +979,7 @@ export default function get(): webpage.PathPair {
 				},
 				//#region 右側のやつら
 				// 担当者
+				// (ログイン中)
 				{
 					selector: {
 						value: "#assignees-select-menu summary",
@@ -1017,6 +1018,7 @@ export default function get(): webpage.PathPair {
 					}
 				},
 				// ラベル
+				// (ログイン中)
 				{
 					selector: {
 						value: "#labels-select-menu summary",
@@ -1073,6 +1075,7 @@ export default function get(): webpage.PathPair {
 					}
 				},
 				// マイルストーン
+				// (ログイン中)
 				{
 					selector: {
 						value: "#milestone-select-menu summary",
