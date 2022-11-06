@@ -8,6 +8,7 @@ export enum CommonQuery {
 	QUERY_SIGN_UP,
 	QUERY_UPDATED,
 	QUERY_LABEL_REPOSITORY_STATUS,
+	QUERY_LABEL_RELEASE_STATUS,
 	QUERY_RELATIVE_TIME,
 	QUERY_REPOSITORY_HEADER_PIN,
 	QUERY_REPOSITORY_HEADER_WATCH,
@@ -113,6 +114,22 @@ export const CommonQuerySetting = new Map<CommonQuery, setting.QuerySetting>([
 					}
 				}
 			],
+		}
+	}],
+	[CommonQuery.QUERY_LABEL_RELEASE_STATUS, {
+		selector: {
+			value: "span.Label.Label--success",
+			all: true,
+		},
+		text: {
+			matches: [
+				{
+					pattern: "Latest",
+					replace: {
+						value: "最新"
+					}
+				}
+			]
 		}
 	}],
 	[CommonQuery.QUERY_RELATIVE_TIME, {

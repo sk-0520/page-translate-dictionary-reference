@@ -650,6 +650,7 @@ export default function get(): webpage.PathPair {
 				CommonQuery[CommonQuery.QUERY_UPDATED],
 				//
 				CommonQuery[CommonQuery.QUERY_LABEL_REPOSITORY_STATUS],
+				CommonQuery[CommonQuery.QUERY_LABEL_RELEASE_STATUS],
 				CommonQuery[CommonQuery.QUERY_RELATIVE_TIME],
 				//
 				CommonQuery[CommonQuery.QUERY_REPOSITORY_HEADER_PIN],
