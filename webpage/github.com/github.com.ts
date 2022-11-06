@@ -23,7 +23,7 @@ export default class GitHubCom implements webpage.SettingFactory {
 			hosts: [
 				'github.com'
 			],
-			level: 0,
+			priority: 0,
 			language: 'ja',
 			watch: {
 				document: [

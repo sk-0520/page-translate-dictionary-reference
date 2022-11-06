@@ -14,7 +14,7 @@ export default class ExampleCom implements webpage.SettingFactory {
 			hosts: [
 				'example.com'
 			],
-			level: 0,
+			priority: 0,
 			language: 'ja',
 			path: {
 				"/": {
