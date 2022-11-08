@@ -40,6 +40,16 @@
 		},
 		"liveServer.settings.NoBrowser": true,
 		"liveServer.settings.root": "dist",
+		"json.schemas": [
+			{
+				"fileMatch": [
+					"*.jsonc"
+				],
+				"schema": {
+					"allowTrailingCommas": true
+				}
+			}
+		]
 	},
 	"extensions": {
 		"recommendations": [
