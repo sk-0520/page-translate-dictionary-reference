@@ -1075,11 +1075,14 @@ export default function get(): webpage.PathPair {
 					}
 				},
 				// マイルストーン
-				// (ログイン中)
 				{
 					selector: {
+						meta: {
+							'user-login': {
+							}
+						},
 						value: "#milestone-select-menu summary",
-						node: 2
+						node: 2,
 					},
 					text: {
 						replace: {
