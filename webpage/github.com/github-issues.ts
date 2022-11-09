@@ -978,26 +978,48 @@ export default function get(): webpage.PathPair {
 					}
 				},
 				//#region 右側のやつら
-				// 担当者
-				// (ログイン中)
 				{
 					selector: {
-						value: "#assignees-select-menu summary",
-						node: 2
+						value: ".discussion-sidebar-item .discussion-sidebar-heading",
+						all: true,
 					},
 					text: {
-						replace: {
-							value: "担当者"
-						}
+						matches: [
+							{
+								pattern: "Assignees",
+								replace: {
+									value: "担当者",
+								}
+							},
+							{
+								pattern: "Labels",
+								replace: {
+									value: "ラベル",
+								}
+							},
+							{
+								pattern: "Projects",
+								replace: {
+									value: "プロジェクト",
+								}
+							},
+							{
+								pattern: "Milestone",
+								replace: {
+									value: "マイルストーン",
+								}
+							},
+						]
 					}
 				},
+				// 担当者
 				{
 					selector: {
 						value: ".js-issue-assign-self"
 					},
 					text: {
 						replace: {
-							value: "あなたを割り当てる",
+							value: "担当する",
 						}
 					}
 				},
@@ -1018,18 +1040,6 @@ export default function get(): webpage.PathPair {
 					}
 				},
 				// ラベル
-				// (ログイン中)
-				{
-					selector: {
-						value: "#labels-select-menu summary",
-						node: 2
-					},
-					text: {
-						replace: {
-							value: "ラベル"
-						}
-					}
-				},
 				{
 					selector: {
 						value: ".js-issue-labels",
@@ -1049,17 +1059,6 @@ export default function get(): webpage.PathPair {
 				// プロジェクト
 				{
 					selector: {
-						value: "#projects-select-menu summary",
-						node: 2
-					},
-					text: {
-						replace: {
-							value: "プロジェクト"
-						}
-					}
-				},
-				{
-					selector: {
 						value: "#partial-discussion-sidebar .discussion-sidebar-item form[action*='/projects/'] > span",
 						node: webpage.TextNode.FirstOccurrence
 					},
@@ -1075,22 +1074,6 @@ export default function get(): webpage.PathPair {
 					}
 				},
 				// マイルストーン
-				{
-					selector: {
-						meta: {
-							'user-login': {
-								mode: 'not_empty',
-							}
-						},
-						value: "#milestone-select-menu summary",
-						node: 2,
-					},
-					text: {
-						replace: {
-							value: "マイルストーン"
-						}
-					}
-				},
 				{
 					selector: {
 						value: "#partial-discussion-sidebar .discussion-sidebar-item form[action*='/set_milestone?']",
