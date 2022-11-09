@@ -1079,6 +1079,7 @@ export default function get(): webpage.PathPair {
 					selector: {
 						meta: {
 							'user-login': {
+								mode: 'not_empty',
 							}
 						},
 						value: "#milestone-select-menu summary",
