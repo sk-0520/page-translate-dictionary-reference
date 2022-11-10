@@ -51,25 +51,25 @@ export default function get(): webpage.PathPair {
 							{
 								pattern: "Your issues",
 								replace: {
-									value: "あなたの課題"
+									value: "自分の課題"
 								}
 							},
 							{
 								pattern: "Your pull requests",
 								replace: {
-									value: "あなたのプルリクエスト"
+									value: "自分のプルリクエスト"
 								}
 							},
 							{
 								pattern: "Everything assigned to you",
 								replace: {
-									value: "あなたに割り当てられた一覧"
+									value: "自分に割り当てられた一覧"
 								}
 							},
 							{
 								pattern: "Everything mentioning you",
 								replace: {
-									value: "あなたに関係する一覧"
+									value: "自分に関係する一覧"
 								}
 							},
 						]
@@ -1088,6 +1088,24 @@ export default function get(): webpage.PathPair {
 								}
 							}
 						]
+					}
+				},
+				// 関係者
+				{
+					selector: {
+						value: '#partial-users-participants .discussion-sidebar-heading'
+					},
+					text: {
+						matches: [
+							{
+								mode: 'regex',
+								pattern: /(?<COUNT>\d+)\s+participant(s?)/.source,
+								replace: {
+									value: "関係者: $<COUNT>名",
+								}
+							}
+						],
+
 					}
 				},
 				//#endregion
