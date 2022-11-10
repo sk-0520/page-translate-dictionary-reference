@@ -390,7 +390,7 @@ export default function get(): webpage.PathPair {
 						matches: [
 							{
 								mode: "regex",
-								pattern: "(?<MONTH>\\w+)\\s+(\\d+,\\s+)?(?<YEAR>[1-9][0-9][0-9][0-9])",
+								pattern: /(?<MONTH>\w+)\s+(\d+,\s+)?(?<YEAR>[1-9][0-9][0-9][0-9])/.source,
 								replace: {
 									value: "$<YEAR>年 $<MONTH>月",
 									regex: {

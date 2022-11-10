@@ -147,21 +147,21 @@ export const CommonQuerySetting = new Map<CommonQuery, setting.QuerySetting>([
 				},
 				{
 					mode: "regex",
-					pattern: "(?<TIME>\\d) seconds ago",
+					pattern: "(?<TIME>\\d+) seconds ago",
 					replace: {
 						value: "$<TIME> 秒間前"
 					}
 				},
 				{
 					mode: "regex",
-					pattern: "(?<TIME>\\d) minute(s)? ago",
+					pattern: "(?<TIME>\\d+) minute(s)? ago",
 					replace: {
 						value: "$<TIME> 分間前"
 					}
 				},
 				{
 					mode: "regex",
-					pattern: "(?<TIME>\\d) hours ago",
+					pattern: "(?<TIME>\\d+) hours ago",
 					replace: {
 						value: "$<TIME> 時間前"
 					}
@@ -174,7 +174,7 @@ export const CommonQuerySetting = new Map<CommonQuery, setting.QuerySetting>([
 				},
 				{
 					mode: "regex",
-					pattern: "(?<TIME>\\d) days ago",
+					pattern: "(?<TIME>\\d+) days ago",
 					replace: {
 						value: "$<TIME> 日前"
 					}
@@ -188,18 +188,64 @@ export const CommonQuerySetting = new Map<CommonQuery, setting.QuerySetting>([
 				},
 				{
 					mode: "regex",
-					pattern: "(?<TIME>\\d) months ago",
+					pattern: "(?<TIME>\\d+) months ago",
 					replace: {
 						value: "$<TIME> ヵ月前"
 					}
 				},
 				{
 					mode: "regex",
-					pattern: "(?<TIME>\\d) years ago",
+					pattern: "(?<TIME>\\d+) years ago",
 					replace: {
 						value: "$<TIME> 年前"
 					}
 				},
+				{
+					mode: "regex",
+					pattern: /(on\s+)?(?<MONTH>\w+)\s+(?<DAY>\d+)\s*,\s+(?<YEAR>\d+)$/.source,
+					replace: {
+						value: "$<YEAR>/$<MONTH>/$<DAY>",
+						regex: {
+							"MONTH": {
+								'Jan': '1',
+								'Feb': '2',
+								'Mar': '3',
+								'Apr': '4',
+								'May': '5',
+								'Jun': '6',
+								'Jul': '7',
+								'Aug': '8',
+								'Sep': '9',
+								'Oct': '10',
+								'Nov': '11',
+								'Dec': '12',
+							}
+						}
+					}
+				},
+				{
+					mode: "regex",
+					pattern: /(on\s+)?(?<MONTH>\w+)\s+(?<DAY>\d+)$/.source,
+					replace: {
+						value: "$<MONTH>/$<DAY>",
+						regex: {
+							"MONTH": {
+								'Jan': '1',
+								'Feb': '2',
+								'Mar': '3',
+								'Apr': '4',
+								'May': '5',
+								'Jun': '6',
+								'Jul': '7',
+								'Aug': '8',
+								'Sep': '9',
+								'Oct': '10',
+								'Nov': '11',
+								'Dec': '12',
+							}
+						}
+					}
+				}
 			]
 		}
 	}],

@@ -8,7 +8,7 @@ import { CommonText } from './github-common-text';
  */
 export default function get(): webpage.PathPair {
 	return {
-		pattern: /^\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)\/(issues(\/(\\d+)|(new))?)|(labels)|(milestones)|(pulls)/,
+		pattern: /^\/([a-zA-Z0-9_-]+)\/([\.a-zA-Z0-9_-]+)\/(issues(\/(\\d+)|(new))?)|(labels)|(milestones)|(pulls)/,
 		setting: {
 			query: [
 				//#region 課題一覧

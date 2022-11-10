@@ -7,7 +7,7 @@ import { CommonQuery } from './github-common-query'
  */
 export default function get(): webpage.PathPair {
 	return {
-		pattern: /^\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)((\/tree?\/?)|(\/?$))/,
+		pattern: /^\/([a-zA-Z0-9_-]+)\/([\.a-zA-Z0-9_-]+)((\/tree?\/?)|(\/?$))/,
 		setting: {
 			query: [
 				//#region ソースなし
