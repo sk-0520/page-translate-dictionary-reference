@@ -159,7 +159,7 @@ export default function get(): webpage.PathPair {
 				// フィルター Open/Close
 				{
 					selector: {
-						value: "#js-issues-toolbar .table-list-filters .table-list-header-toggle:nth-child(1) a",
+						value: "#repo-content-turbo-frame a[href*='/issues?q=']",
 						all: true,
 						node: webpage.TextNode.FirstOccurrence,
 					},
@@ -496,6 +496,22 @@ export default function get(): webpage.PathPair {
 						replace: {
 							value: "起票する"
 						}
+					}
+				},
+				// 未記入
+				{
+					selector: {
+						value: ".comment .markdown-body .color-fg-muted em",
+					},
+					text: {
+						matches: [
+							{
+								pattern: "No description provided.",
+								replace: {
+									value: "コメント無し。"
+								}
+							}
+						]
 					}
 				},
 				//#endregion

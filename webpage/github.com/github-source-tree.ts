@@ -72,7 +72,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: "git-clone-help h3",
-						node:1
+						node: 1
 					},
 					text: {
 						replace: {
@@ -198,12 +198,17 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: ".file-navigation get-repo summary",
-						node: 1
+						node: webpage.TextNode.FirstOccurrence
 					},
 					text: {
-						replace: {
-							value: "コード"
-						}
+						matches: [
+							{
+								pattern: 'Code',
+								replace: {
+									value: "コード"
+								}
+							}
+						]
 					}
 				},
 				{

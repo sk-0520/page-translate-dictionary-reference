@@ -292,7 +292,7 @@ export const CommonQuerySetting = new Map<CommonQuery, setting.QuerySetting>([
 	}],
 	[CommonQuery.QUERY_REPOSITORY_HEADER_FORK, {
 		selector: {
-			value: ".pagehead-actions li:nth-child(2) a",
+			value: "[icon=repo-forked]",
 			node: 2
 		},
 		text: {
@@ -303,7 +303,10 @@ export const CommonQuerySetting = new Map<CommonQuery, setting.QuerySetting>([
 	}],
 	[CommonQuery.QUERY_REPOSITORY_HEADER_STAR, {
 		selector: {
-			value: ".pagehead-actions li:nth-child(3) a span",
+			value: [
+				".pagehead-actions li:nth-child(3) a span",
+				"form[action$='/star'] span",
+			].join(','),
 		},
 		text: {
 			replace: {
