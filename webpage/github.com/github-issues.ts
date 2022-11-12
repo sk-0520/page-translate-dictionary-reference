@@ -548,7 +548,7 @@ export default function get(): webpage.PathPair {
 						}
 					}
 				},
-				// ツールバー
+				// ツールバー(動いてねぇ！)
 				{
 					selector: {
 						value: "markdown-toolbar tool-tip",
