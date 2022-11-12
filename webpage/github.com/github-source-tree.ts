@@ -194,6 +194,61 @@ export default function get(): webpage.PathPair {
 						}
 					}
 				},
+				{
+					selector: {
+						value: [
+							".file-navigation .d-flex details summary span",
+							"span.d-md-flex:nth-child(1)", //@DOM
+						].join(','),
+						node: webpage.TextNode.FirstOccurrence
+					},
+					text: {
+						matches: [
+							{
+								pattern: "Add file",
+								replace: {
+									value: "ファイル追加"
+								}
+							}
+						],
+					}
+				},
+				{
+					selector: {
+						value: [
+							".file-navigation .d-flex details form[action*='/new/'] button",
+							"ul.dropdown-menu > li:nth-child(3) > form:nth-child(1) > button:nth-child(2)"
+						].join(','),
+					},
+					text: {
+						replace: {
+							value: "新規ファイル"
+						}
+					}
+				},
+				{
+					selector: {
+						value: [
+							".file-navigation .d-flex details a.dropdown-item[href*='/upload/']",
+							"ul.dropdown-menu > li:nth-child(4) > a:nth-child(1)",
+						].join(',')
+					},
+					text: {
+						replace: {
+							value: "アップロード"
+						}
+					}
+				},
+				{
+					selector: {
+						value: ".Box .Box-header a strong"
+					},
+					text: {
+						replace: {
+							value: '履歴',
+						}
+					}
+				},
 				// Code
 				{
 					selector: {

@@ -8,6 +8,7 @@ import top from './github-top';
 import login from './github-login';
 import user from './github-user';
 import source_tree from './github-source-tree';
+import source_blob from './github-source-blob';
 import issues from './github-issues';
 
 export default class GitHubCom implements webpage.SettingFactory {
@@ -44,6 +45,7 @@ export default class GitHubCom implements webpage.SettingFactory {
 			login(),
 			user(),
 			source_tree(),
+			source_blob(),
 			issues(),
 		];
 		for (const item of paths) {
