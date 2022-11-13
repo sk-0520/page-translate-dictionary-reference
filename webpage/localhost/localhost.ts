@@ -6,7 +6,7 @@ export default class Localhost implements webpage.SettingFactory {
 
 	public create(): setting.SiteSetting {
 		const result: setting.SiteSetting = {
-			name: 'localhost@test',
+			name: 'localhost-test',
 			version: '0.0.1',
 			information: {
 				repository: 'https://github.com/sk-0520/page-translation-dictionary-reference',

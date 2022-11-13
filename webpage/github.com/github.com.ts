@@ -16,7 +16,7 @@ export default class GitHubCom implements webpage.SettingFactory {
 
 	public create(): setting.SiteSetting {
 		const result: setting.SiteSetting = {
-			name: 'github.com@ja',
+			name: 'github.com-ja',
 			version: '0.00.001',
 			information: {
 				repository: 'https://github.com/sk-0520/page-translation-dictionary-reference',

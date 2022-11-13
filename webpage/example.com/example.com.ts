@@ -6,7 +6,7 @@ export default class ExampleCom implements webpage.SettingFactory {
 
 	public create(): setting.SiteSetting {
 		const result: setting.SiteSetting = {
-			name: 'example.com@ja',
+			name: 'example.com-ja',
 			version: '0.0.1',
 			information: {
 				repository: 'https://github.com/sk-0520/page-translation-dictionary-reference',
