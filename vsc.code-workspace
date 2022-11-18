@@ -5,8 +5,27 @@
 		}
 	],
 	"settings": {
+		"files.exclude": {
+			"**/bin": true,
+			"**/obj": true,
+			"**/node_modules": true,
+			".vs": true,
+			"*.lnk": true,
+		},
+		"files.watcherExclude": {
+			"**/.git/objects/**": true,
+			"**/.git/subtree-cache/**": true,
+			"**/node_modules/*/**": true,
+			".vs": true,
+			".vscode": true,
+			"**/dist/**": true,
+			"**/bin/**": true,
+			"**/obj/**": true,
+			"*.lnk": true,
+			"page-translation-dictionary/": true
+		},
 		"cSpell.words": [
-			"endregion"
+			"endregion",
 		],
 		"workbench.colorCustomizations": {
 			// タイトルバー
@@ -18,11 +37,26 @@
 			// アクティビティバー
 			"activityBar.background": "#5dff73",
 			"activityBar.foreground": "#111",
+			"editor.background": "#001000",
+			"sideBar.background": "#112011"
 		},
+		"liveServer.settings.NoBrowser": true,
+		"liveServer.settings.root": "dist",
+		"json.schemas": [
+			{
+				"fileMatch": [
+					"*.jsonc"
+				],
+				"schema": {
+					"allowTrailingCommas": true
+				}
+			}
+		]
 	},
 	"extensions": {
 		"recommendations": [
-			"ritwickdey.LiveServer"
+			"ritwickdey.liveserver",
+			"streetsidesoftware.code-spell-checker"
 		]
 	}
 }

@@ -1,0 +1,4 @@
+[submodule "page-translation-dictionary"]
+	path = page-translation-dictionary
+	url = git@github.com:sk-0520/page-translation-dictionary.git
+	branch = develop
