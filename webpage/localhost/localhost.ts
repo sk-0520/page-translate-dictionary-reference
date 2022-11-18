@@ -50,7 +50,47 @@ export default class Localhost implements webpage.SettingFactory {
 									value: "まっちしない"
 								}
 							}
-						}
+						},
+						{
+							selector: {
+								value: "#p",
+								all: true,
+							},
+							text: {
+								matches: [
+									{
+										pattern: "a",
+										replace: {
+											value: "AA",
+										}
+									},
+									{
+										pattern: "i",
+										replace: {
+											value: "II",
+										}
+									},
+									{
+										pattern: "u",
+										replace: {
+											value: "UU",
+										}
+									},
+									{
+										pattern: "e",
+										replace: {
+											value: "EE",
+										}
+									},
+									{
+										pattern: "o",
+										replace: {
+											value: "OO",
+										}
+									},
+								],
+							}
+						},
 					]
 				}
 			}

@@ -719,7 +719,7 @@ export default function get(): webpage.PathPair {
 				{
 					selector: {
 						value: ".gh-header-actions button",
-						watch: true,
+						//watch: true,
 					},
 					text: {
 						matches: [
