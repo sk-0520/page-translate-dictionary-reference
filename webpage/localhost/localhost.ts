@@ -23,7 +23,7 @@ export default class Localhost implements webpage.SettingFactory {
 						{
 							selector: {
 								value: "ul li",
-								all: true
+								all: true,
 							},
 							text: {
 								matches: [
