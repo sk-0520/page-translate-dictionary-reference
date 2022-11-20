@@ -91,6 +91,28 @@ export default class Localhost implements webpage.SettingFactory {
 								],
 							}
 						},
+						{
+							selector: {
+								value: "#event"
+							},
+							attributes: {
+								'TiTlE': {
+									replace: {
+										value: 'おん'
+									}
+								},
+								'onclick': {
+									replace: {
+										value: 'alert(2)'
+									}
+								},
+								'lang': {
+									replace: {
+										value: 'ja'
+									}
+								}
+							}
+						},
 					]
 				}
 			}
