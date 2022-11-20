@@ -14,7 +14,7 @@ export default class ExampleComJa implements webpage.SettingFactory {
 			priority: ExampleCom.priority,
 			language: 'ja',
 			path: {
-				"/": {
+				"^/$": {
 					query: [
 						{
 							selector: {
