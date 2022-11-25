@@ -12,6 +12,53 @@ export default function get(): webpage.PathPair {
 		setting: {
 			query: [
 				//#region 課題一覧
+				// 課題/PR無し ヘッダ
+				{
+					selector: {
+						value: ".blankslate h3",
+					},
+					text: {
+						matches: [
+							{
+								pattern: 'Welcome to issues!',
+								replace: {
+									value: "課題管理へようこそ！"
+								}
+							},
+							{
+								pattern: 'Welcome to pull requests!',
+								replace: {
+									value: "プルリクエストへようこそ！"
+								}
+							},
+						]
+					}
+				},
+				// 課題/PR無し 本文
+				{
+					selector: {
+						value: ".blankslate h3 + p",
+						node: 1,
+					},
+					text: {
+						matches: [
+							{
+								mode: 'forward',
+								pattern: 'Issues are used to track',
+								replace: {
+									value: "課題は ToDo、不具合、新機能のリクエスト等を管理をします。 課題が起票されると検索・フィルタリングが出来るリストが表示されます。 課題を起こす: "
+								}
+							},
+							{
+								mode: 'forward',
+								pattern: 'Pull requests help you collaborate',
+								replace: {
+									value: "プルリクエストは他の人と共同でコードを作成するのに役立ちます。 プルリクエストが作成されると検索・フィルタリングが出来るリストが表示されます。 プルリクエストを作成: "
+								}
+							},
+						]
+					}
+				},
 				// ヘッダ
 				{
 					selector: {
