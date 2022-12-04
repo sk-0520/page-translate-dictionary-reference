@@ -1,5 +1,6 @@
 import * as setting from '../../page-translation-dictionary/source/scripts/extension/setting';
 import * as webpage from '../webpage';
+import info from '../info';
 
 export default class Localhost implements webpage.SettingFactory {
 	//#region SettingFactory
@@ -7,7 +8,7 @@ export default class Localhost implements webpage.SettingFactory {
 	public create(): setting.SiteSetting {
 		const result: setting.SiteSetting = {
 			name: 'localhost-test',
-			version: '0.0.1',
+			version: info.version,
 			information: {
 				repository: 'https://github.com/sk-0520/page-translation-dictionary-reference',
 			},

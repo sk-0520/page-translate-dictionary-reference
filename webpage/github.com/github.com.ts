@@ -10,6 +10,7 @@ import user from './github-user';
 import source_tree from './github-source-tree';
 import source_blob from './github-source-blob';
 import issues from './github-issues';
+import info from '../info';
 
 export default class GitHubCom implements webpage.SettingFactory {
 	//#region SettingFactory
@@ -17,7 +18,7 @@ export default class GitHubCom implements webpage.SettingFactory {
 	public create(): setting.SiteSetting {
 		const result: setting.SiteSetting = {
 			name: 'github.com-ja',
-			version: '0.0.1',
+			version: info.version,
 			information: {
 				repository: 'https://github.com/sk-0520/page-translation-dictionary-reference',
 			},

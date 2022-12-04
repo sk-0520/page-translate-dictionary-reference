@@ -1,5 +1,7 @@
+import info from '../info';
+
 const ExampleCom = {
-	version: '0.0.1',
+	version: info.version,
 	information: {
 		repository: 'https://github.com/sk-0520/page-translation-dictionary-reference',
 	},
