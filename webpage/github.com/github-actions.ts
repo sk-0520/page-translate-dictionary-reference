@@ -12,6 +12,37 @@ export default function get(): webpage.PathPair {
 		setting: {
 			query: [
 				//#region
+				{
+					selector: {
+						value: "h3.f3"
+					},
+					text: {
+						replace: {
+							value: "アクション",
+						}
+					}
+				},
+				{
+					selector: {
+						value: "a[href$='/actions/new']",
+						all: true
+					},
+					text: {
+						replace: {
+							value: "新規ワークフロー",
+						}
+					}
+				},
+				{
+					selector: {
+						value: "a[href$='/actions'] .ActionList-item-label"
+					},
+					text: {
+						replace: {
+							value: "全てのワークフロー"
+						}
+					}
+				}
 				//#endregion
 			],
 			import: [
