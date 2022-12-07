@@ -4,13 +4,19 @@ import { CommonSelector, CommonSelectorSetting } from './github-common-selector'
 import { CommonText, CommonTextSetting } from './github-common-text';
 import { CommonQuery, CommonQuerySetting } from './github-common-query';
 
+import info from '../info';
 import top from './github-top';
 import login from './github-login';
 import user from './github-user';
 import source_tree from './github-source-tree';
 import source_blob from './github-source-blob';
 import issues from './github-issues';
-import info from '../info';
+import actions from './github-actions';
+import projects from './github-projects';
+import wiki from './github-wiki';
+import security from './github-security';
+import insights_pulse from './github-insights-pulse';
+import settings from './github-settings';
 
 export default class GitHubCom implements webpage.SettingFactory {
 	//#region SettingFactory
@@ -48,6 +54,12 @@ export default class GitHubCom implements webpage.SettingFactory {
 			source_tree(),
 			source_blob(),
 			issues(),
+			actions(),
+			projects(),
+			wiki(),
+			security(),
+			insights_pulse(),
+			settings(),
 		];
 		for (const item of paths) {
 			result.path![item.pattern.source] = item.setting;
