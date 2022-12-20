@@ -712,6 +712,110 @@ export default function get(): webpage.PathPair {
 						}
 					}
 				},
+				// 隠す
+				{
+					selector: {
+						value: ".edit-comment-hide h3.f4",
+						all: true
+					},
+					text: {
+						replace: {
+							value: "非表示にする理由を選択してください"
+						}
+					}
+				},
+				{
+					selector: {
+						value: ".edit-comment-hide .flash-warn p",
+						all: true,
+						node: 1
+					},
+					text: {
+						replace: {
+							value: "選択された理由は他ユーザーに対してこのコメントを非表示にした理由として表示されます"
+						}
+					}
+				},
+				{
+					selector: {
+						value: ".edit-comment-hide .flash-warn p a",
+						all: true,
+					},
+					text: {
+						matches: [
+							{
+								pattern: "Learn more",
+								replace: {
+									value: "詳細はこちら"
+								}
+							}
+						]
+					}
+				},
+				// 隠す理由
+				{
+					selector: {
+						value: ".edit-comment-hide .flash-warn [name='classifier'] option",
+						all: true,
+					},
+					text: {
+						matches: [
+							{
+								pattern: 'Choose a reason',
+								replace: {
+									value: '<理由を選択>'
+								}
+							},
+							{
+								pattern: 'Spam',
+								replace: {
+									value: 'スパム'
+								}
+							},
+							{
+								pattern: 'Abuse',
+								replace: {
+									value: '誹謗中傷'
+								}
+							},
+							{
+								pattern: 'Off Topic',
+								replace: {
+									value: '無関係'
+								}
+							},
+							{
+								pattern: 'Outdated',
+								replace: {
+									value: '古い'
+								}
+							},
+							{
+								pattern: 'Duplicate',
+								replace: {
+									value: '重複'
+								}
+							},
+							{
+								pattern: 'Resolved',
+								replace: {
+									value: '解決済み'
+								}
+							},
+						]
+					}
+				},
+				{
+					selector: {
+						value: ".edit-comment-hide .flash-warn button[type='submit']",
+						all: true,
+					},
+					text: {
+						replace: {
+							value: '隠す'
+						}
+					}
+				},
 				//#endregion
 				//#region 課題詳細
 				// ステータス
@@ -842,7 +946,7 @@ export default function get(): webpage.PathPair {
 							{
 								pattern: "Hide",
 								replace: {
-									value: "隠す"
+									value: "非表示"
 								}
 							},
 							{
@@ -1078,7 +1182,7 @@ export default function get(): webpage.PathPair {
 									value: "開発用",
 								}
 							},
-					]
+						]
 					}
 				},
 				// 担当者

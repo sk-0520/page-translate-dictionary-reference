@@ -17,6 +17,7 @@ export enum CommonQuery {
 	QUERY_REPOSITORY_HEADER_CODE,
 	QUERY_REPOSITORY_HEADER_ISSUES,
 	QUERY_REPOSITORY_HEADER_PR,
+	QUERY_REPOSITORY_HEADER_DISCUSSION,
 	QUERY_REPOSITORY_HEADER_ACTIONS,
 	QUERY_REPOSITORY_HEADER_PROJECT,
 	QUERY_REPOSITORY_HEADER_WIKI,
@@ -181,6 +182,20 @@ export const CommonQuerySetting = new Map<CommonQuery, setting.QuerySetting>([
 				},
 				{
 					mode: "perfect",
+					pattern: "last week",
+					replace: {
+						value: "先週"
+					}
+				},
+				{
+					mode: "regex",
+					pattern: "(?<TIME>\\d+) weeks ago",
+					replace: {
+						value: "$<TIME> 週間前"
+					}
+				},
+				{
+					mode: "perfect",
 					pattern: "last month",
 					replace: {
 						value: "先月"
@@ -191,6 +206,13 @@ export const CommonQuerySetting = new Map<CommonQuery, setting.QuerySetting>([
 					pattern: "(?<TIME>\\d+) months ago",
 					replace: {
 						value: "$<TIME> ヵ月前"
+					}
+				},
+				{
+					mode: "perfect",
+					pattern: "last year",
+					replace: {
+						value: "去年"
 					}
 				},
 				{
@@ -342,6 +364,16 @@ export const CommonQuerySetting = new Map<CommonQuery, setting.QuerySetting>([
 		text: {
 			replace: {
 				value: "プルリクエスト"
+			}
+		}
+	}],
+	[CommonQuery.QUERY_REPOSITORY_HEADER_DISCUSSION, {
+		selector: {
+			value: "#discussions-tab [data-content]"
+		},
+		text: {
+			replace: {
+				value: "ディスカッション"
 			}
 		}
 	}],

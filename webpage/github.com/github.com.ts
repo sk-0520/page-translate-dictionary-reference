@@ -11,6 +11,7 @@ import user from './github-user';
 import source_tree from './github-source-tree';
 import source_blob from './github-source-blob';
 import issues from './github-issues';
+import discussions from './github-discussions';
 import actions from './github-actions';
 import projects from './github-projects';
 import wiki from './github-wiki';
@@ -54,6 +55,7 @@ export default class GitHubCom implements webpage.SettingFactory {
 			source_tree(),
 			source_blob(),
 			issues(),
+			discussions(),
 			actions(),
 			projects(),
 			wiki(),
